@@ -85,6 +85,12 @@ def main() -> int:
             known = WELL_KNOWN.get(name.strip())
             if known and not props.get('name:en'):
                 props['name:en'] = known
+                # También la transliteración: los datos commiteados llevan
+                # ambas y así el script reproduce los assets byte a byte.
+                if HAS_ARABIC.search(name):
+                    latin = transliterate(name)
+                    if latin and HAS_LATIN.search(latin) and not props.get('name:latin'):
+                        props['name:latin'] = latin
                 added += 1
                 changed = True
             existing = ' '.join(

@@ -106,12 +106,14 @@ class OfflinePoiSearchService implements SearchLocationService {
         if (e.haystack.contains(q)) e,
     ];
 
-    // Latin fallback: unvocalized Arabic transliterates without vowels
-    // ("Tahrir" → "thryr"), so when a latin query finds nothing, retry with
-    // vowels stripped from both sides.
+    // Latin fallback: unvocalized Arabic yields consonant-skeleton
+    // transliterations (التحرير → "al-thryr"), so a vocalized query like
+    // "Tahrir" misses them; retry with vowels stripped on both sides
+    // ("thrr" ⊂ "l-thrr"). Guarded to 3+ consonants to keep false
+    // positives down, and only fired when the exact pass found nothing.
     if (matches.isEmpty && RegExp('[a-z]').hasMatch(q)) {
       final dq = _devowel(q);
-      if (dq.length >= 2) {
+      if (dq.length >= 3) {
         matches = <_PoiEntry>[
           for (final e in entries)
             if (_devowel(e.haystack).contains(dq)) e,

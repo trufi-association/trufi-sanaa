@@ -111,6 +111,10 @@ dependency_overrides:
       url: https://github.com/trufi-association/trufi-core.git
       ref: v5.18.0
       path: packages/trufi_core_interfaces
+  # TEMPORAL: validación local contra el clone de core en la rama
+  # local/v5.18-issue1-fixes (cámara + endónimo sobre v5.18). Antes de
+  # pushear: volver a git refs del tag publicado. Aplica a los TRES
+  # overrides de path de este bloque (utils, maps, transport_list).
   trufi_core_utils:
     path: ../../trufi-core/trufi-core/packages/trufi_core_utils
   trufi_core_base_widgets:
@@ -123,8 +127,7 @@ dependency_overrides:
       url: https://github.com/trufi-association/trufi-core.git
       ref: v5.18.0
       path: packages/trufi_core_custom_material
-  # TEMPORAL (validación local del fix de overzoom, rama
-  # fix/offline-source-maxzoom-v5.18 del clone local): NO pushear así.
+  # TEMPORAL (ver nota en trufi_core_utils).
   trufi_core_maps:
     path: ../../trufi-core/trufi-core/packages/trufi_core_maps
   trufi_core_routing:
@@ -172,6 +175,7 @@ dependency_overrides:
       url: https://github.com/trufi-association/trufi-core.git
       ref: v5.18.0
       path: packages/screens/trufi_core_saved_places
+  # TEMPORAL (ver nota en trufi_core_utils).
   trufi_core_transport_list:
     path: ../../trufi-core/trufi-core/packages/screens/trufi_core_transport_list
   trufi_core_settings:
