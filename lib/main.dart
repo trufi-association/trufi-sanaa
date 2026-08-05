@@ -71,6 +71,10 @@ final List<ITrufiMapEngine> _mapEngines = [
       displayDescription: 'Standard offline map',
       config: OfflineMapConfig(
         mbtilesAsset: 'assets/offline/sanaa.mbtiles',
+        // Must match MAX_ZOOM in tools/mbtiles-yemen-sanaa/.env (tiles are
+        // generated at z15 — planetiler's ceiling — so street detail is real
+        // data instead of overzoom).
+        mbtilesMaxZoom: 15,
         styleAsset: 'assets/offline/styles/osm-liberty/style.json',
         spritesAssetDir: 'assets/offline/styles/osm-liberty/',
         fontsAssetDir: 'assets/offline/fonts/',
@@ -134,11 +138,7 @@ void main() {
             engines: _mapEngines,
             defaultCenter: _defaultCenter,
             // Open zoomed into central Sana'a so the street grid is visible.
-            // Core's camera zoom is the Leaflet convention (MapLibre + 1), so
-            // 15 here lands on MapLibre z14 — the level where osm-liberty
-            // draws minor streets and buildings at full width. At 14 the map
-            // rendered as bare avenues (issue #1, "map lacks detail").
-            defaultZoom: 15,
+            defaultZoom: 14,
           ),
         ),
         ChangeNotifierProvider(
