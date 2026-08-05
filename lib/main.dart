@@ -90,8 +90,20 @@ final List<ITrufiMapEngine> _mapEngines = [
           '768-1023',
           '1024-1279',
           '1280-1535',
+          // Arabic block + Arabic Supplement. Without these, no Arabic map
+          // label can render at all ("Failed to load glyph range 1536-1791")
+          // — and Sana'a is labeled in Arabic everywhere. Glyphs come from
+          // Klokantech Noto Sans (Roboto has no Arabic coverage).
+          '1536-1791',
+          '1792-2047',
           '8192-8447',
           '8448-8703',
+          // Arabic Presentation Forms A/B: MapLibre's text shaping requests
+          // these for joined (cursive) letterforms.
+          '64256-64511',
+          '64512-64767',
+          '64768-65023',
+          '65024-65279',
         ],
       ),
     ),
