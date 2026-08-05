@@ -70,6 +70,10 @@ async function main() {
       skipRoute: () => true,
     },
     gtfsOptions: {
+      // One GTFS route per OSM relation: Sana'a's ~194 lines share only 4
+      // refs (157 use "7"), and grouping by ref collapsed them into 4 routes
+      // — the route list showed 192 identical rows. See issue #1.
+      routePerRelation: true,
       agencyTimezone: 'Asia/Aden',
       agencyUrl: 'https://www.trufi-association.org/',
       cityName: 'sanaa',

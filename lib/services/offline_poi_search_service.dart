@@ -42,10 +42,9 @@ class OfflinePoiSearchService implements SearchLocationService {
         for (final f in features) {
           final feature = f as Map<String, dynamic>;
           final geometry = feature['geometry'] as Map<String, dynamic>?;
-          final coords = geometry?['coordinates'] as List<dynamic>?;
-          if (coords == null || coords.length < 2) continue;
-          final lon = (coords[0] as num).toDouble();
-          final lat = (coords[1] as num).toDouble();
+          final position = _positionOf(geometry);
+          if (position == null) continue;
+          final (lon, lat) = position;
 
           final props =
               (feature['properties'] as Map<String, dynamic>?) ?? const {};
@@ -63,12 +62,17 @@ class OfflinePoiSearchService implements SearchLocationService {
             props['subcategory'],
             props['category'],
           ]);
-          final haystack = [
-            props['name'],
-            props['name:ar'],
-            props['name:en'],
-            props['addr:street'],
-          ].whereType<String>().join(' ').toLowerCase();
+          final haystack = _normalize(
+            [
+              props['name'],
+              props['name:ar'],
+              props['name:en'],
+              // Latin transliteration added at data-generation time so latin
+              // queries can find POIs that only carry Arabic names in OSM.
+              props['name:latin'],
+              props['addr:street'],
+            ].whereType<String>().join(' '),
+          );
 
           entries.add(
             _PoiEntry(
@@ -93,16 +97,29 @@ class OfflinePoiSearchService implements SearchLocationService {
 
   @override
   Future<List<SearchLocation>> search(String query) async {
-    final q = query.trim().toLowerCase();
+    final q = _normalize(query.trim());
     if (q.isEmpty) return const [];
 
     final entries = await _loadEntries();
-    final matches = <_PoiEntry>[
+    var matches = <_PoiEntry>[
       for (final e in entries)
         if (e.haystack.contains(q)) e,
     ];
 
-    int rank(_PoiEntry e) => e.name.toLowerCase().startsWith(q) ? 0 : 1;
+    // Latin fallback: unvocalized Arabic transliterates without vowels
+    // ("Tahrir" → "thryr"), so when a latin query finds nothing, retry with
+    // vowels stripped from both sides.
+    if (matches.isEmpty && RegExp('[a-z]').hasMatch(q)) {
+      final dq = _devowel(q);
+      if (dq.length >= 2) {
+        matches = <_PoiEntry>[
+          for (final e in entries)
+            if (_devowel(e.haystack).contains(dq)) e,
+        ];
+      }
+    }
+
+    int rank(_PoiEntry e) => _normalize(e.name).startsWith(q) ? 0 : 1;
     matches.sort((a, b) {
       final byRank = rank(a).compareTo(rank(b));
       if (byRank != 0) return byRank;
@@ -156,6 +173,59 @@ class OfflinePoiSearchService implements SearchLocationService {
       if (v is String && v.trim().isNotEmpty) return v.trim();
     }
     return null;
+  }
+
+  /// Case folding plus Arabic normalization, applied to both the indexed
+  /// haystack and the query so spelling variants match: diacritics and
+  /// tatweel are stripped, alif variants (أ إ آ) unify to ا, ة to ه and
+  /// ى to ي.
+  static String _normalize(String s) {
+    var t = s.toLowerCase();
+    t = t.replaceAll(RegExp('[ً-ْٰـ]'), '');
+    t = t.replaceAll(RegExp('[أإآ]'), 'ا');
+    t = t.replaceAll('ة', 'ه');
+    t = t.replaceAll('ى', 'ي');
+    return t;
+  }
+
+  static String _devowel(String s) =>
+      s.replaceAll(RegExp('[aeiouy]'), '');
+
+  /// Representative (lon, lat) of a geometry. Points use their coordinate;
+  /// Polygon/MultiPolygon use the outer-ring centroid — without this, every
+  /// polygon POI (universities, squares, big mosques) was silently dropped
+  /// from the index because its `coordinates` is a ring list, not a pair.
+  static (double, double)? _positionOf(Map<String, dynamic>? geometry) {
+    final type = geometry?['type'];
+    final coords = geometry?['coordinates'] as List<dynamic>?;
+    if (coords == null) return null;
+    switch (type) {
+      case 'Point':
+        if (coords.length < 2) return null;
+        return ((coords[0] as num).toDouble(), (coords[1] as num).toDouble());
+      case 'Polygon':
+        return _ringCentroid(coords.isEmpty ? null : coords[0]);
+      case 'MultiPolygon':
+        if (coords.isEmpty) return null;
+        final first = coords[0] as List<dynamic>;
+        return _ringCentroid(first.isEmpty ? null : first[0]);
+      default:
+        return null;
+    }
+  }
+
+  static (double, double)? _ringCentroid(dynamic ring) {
+    if (ring is! List || ring.isEmpty) return null;
+    var lon = 0.0, lat = 0.0, n = 0;
+    for (final p in ring) {
+      if (p is List && p.length >= 2) {
+        lon += (p[0] as num).toDouble();
+        lat += (p[1] as num).toDouble();
+        n++;
+      }
+    }
+    if (n == 0) return null;
+    return (lon / n, lat / n);
   }
 }
 

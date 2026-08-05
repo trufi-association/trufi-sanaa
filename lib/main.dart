@@ -134,7 +134,11 @@ void main() {
             engines: _mapEngines,
             defaultCenter: _defaultCenter,
             // Open zoomed into central Sana'a so the street grid is visible.
-            defaultZoom: 14,
+            // Core's camera zoom is the Leaflet convention (MapLibre + 1), so
+            // 15 here lands on MapLibre z14 — the level where osm-liberty
+            // draws minor streets and buildings at full width. At 14 the map
+            // rendered as bare avenues (issue #1, "map lacks detail").
+            defaultZoom: 15,
           ),
         ),
         ChangeNotifierProvider(

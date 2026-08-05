@@ -1074,11 +1074,9 @@ packages:
   trufi_core_maps:
     dependency: "direct main"
     description:
-      path: "packages/trufi_core_maps"
-      ref: "v5.18.0"
-      resolved-ref: "87db012be7d7e746ca66ebf3b7dee692b3a373ae"
-      url: "https://github.com/trufi-association/trufi-core.git"
-    source: git
+      path: "../../trufi-core/trufi-core/packages/trufi_core_maps"
+      relative: true
+    source: path
     version: "1.0.0"
   trufi_core_navigation:
     dependency: "direct main"
@@ -1155,11 +1153,9 @@ packages:
   trufi_core_transport_list:
     dependency: "direct main"
     description:
-      path: "packages/screens/trufi_core_transport_list"
-      ref: "v5.18.0"
-      resolved-ref: "87db012be7d7e746ca66ebf3b7dee692b3a373ae"
-      url: "https://github.com/trufi-association/trufi-core.git"
-    source: git
+      path: "../../trufi-core/trufi-core/packages/screens/trufi_core_transport_list"
+      relative: true
+    source: path
     version: "1.0.0"
   trufi_core_ui:
     dependency: "direct main"
@@ -1173,11 +1169,9 @@ packages:
   trufi_core_utils:
     dependency: "direct main"
     description:
-      path: "packages/trufi_core_utils"
-      ref: "v5.18.0"
-      resolved-ref: "87db012be7d7e746ca66ebf3b7dee692b3a373ae"
-      url: "https://github.com/trufi-association/trufi-core.git"
-    source: git
+      path: "../../trufi-core/trufi-core/packages/trufi_core_utils"
+      relative: true
+    source: path
     version: "1.0.0"
   typed_data:
     dependency: transitive
