@@ -71,10 +71,6 @@ final List<ITrufiMapEngine> _mapEngines = [
       displayDescription: 'Standard offline map',
       config: OfflineMapConfig(
         mbtilesAsset: 'assets/offline/sanaa.mbtiles',
-        // Must match MAX_ZOOM in tools/mbtiles-yemen-sanaa/.env (tiles are
-        // generated at z15 — planetiler's ceiling — so street detail is real
-        // data instead of overzoom).
-        mbtilesMaxZoom: 15,
         styleAsset: 'assets/offline/styles/osm-liberty/style.json',
         spritesAssetDir: 'assets/offline/styles/osm-liberty/',
         fontsAssetDir: 'assets/offline/fonts/',
