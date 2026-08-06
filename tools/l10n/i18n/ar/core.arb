@@ -18,5 +18,13 @@
   "actionGoHome": "الذهاب إلى الرئيسية",
   "titleError": "خطأ",
   "unreadCount": "{count} غير مقروء",
-  "markAllAsRead": "تعليم الكل كمقروء"
+  "markAllAsRead": "تعليم الكل كمقروء",
+  "errorUnableToStart": "تعذر بدء التشغيل",
+  "errorUnexpected": "حدث خطأ غير متوقع",
+  "initStepAlmostReady": "أوشكنا على الانتهاء",
+  "initStepInitializing": "جارٍ التهيئة",
+  "initStepLoadingMaps": "جارٍ تحميل الخرائط",
+  "initStepLoadingRoutes": "جارٍ تحميل المسارات",
+  "initStepStarting": "جارٍ البدء",
+  "poweredByTrufi": "مدعوم من جمعية Trufi"
 }

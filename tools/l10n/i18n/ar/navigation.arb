@@ -26,5 +26,7 @@
   "navLocationDisabled": "خدمات الموقع معطّلة. يُرجى تفعيلها.",
   "navOrigin": "نقطة الانطلاق",
   "navTransfer": "نقطة التحويل",
-  "navDestination": "الوجهة"
+  "navDestination": "الوجهة",
+  "navRoute": "المسار",
+  "navStopsRemaining": "المحطات المتبقية: {count}"
 }

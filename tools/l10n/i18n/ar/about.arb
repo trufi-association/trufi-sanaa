@@ -10,5 +10,8 @@
   "tagline": "النقل العام في {city}",
   "trufiWebsite": "موقع جمعية Trufi",
   "version": "الإصدار {version}",
-  "volunteerTrufi": "تطوّع مع Trufi"
+  "volunteerTrufi": "تطوّع مع Trufi",
+  "aboutContact": "تواصل معنا",
+  "aboutOpenSourceTitle": "مفتوح المصدر",
+  "aboutSendFeedback": "أرسل لنا ملاحظاتك"
 }

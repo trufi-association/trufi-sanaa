@@ -121,5 +121,9 @@
   "liveVehiclesSubtitle": "عرض الموقع المباشر للحافلات على الخريطة",
   "liveVehiclesEnable": "تفعيل",
   "liveVehiclesStateOn": "مفعّل",
-  "liveVehiclesStateOff": "معطّل"
+  "liveVehiclesStateOff": "معطّل",
+  "placeDestination": "الوجهة",
+  "placeOrigin": "نقطة الانطلاق",
+  "providerNoOptions": "لا يحتوي مزوّد “{provider}” على خيارات قابلة للتعديل.",
+  "resolvingLocation": "جارٍ البحث عن اسم المكان…"
 }

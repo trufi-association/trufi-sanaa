@@ -31,5 +31,8 @@
   "locationRequired": "الموقع مطلوب",
   "locationSelected": "تم تحديد الموقع",
   "tapToSelectLocation": "انقر للتحديد على الخريطة",
-  "change": "تغيير"
+  "change": "تغيير",
+  "errorLoadingPlaces": "خطأ في تحميل الأماكن",
+  "history": "السجل",
+  "retry": "إعادة المحاولة"
 }
