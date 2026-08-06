@@ -27,9 +27,15 @@ class AboutLocalizationsAr extends AboutLocalizations {
   @override
   String get aboutCollapseTitle => 'المزيد عن جمعية Trufi';
   @override
+  String get aboutContact => 'تواصل معنا';
+  @override
   String get aboutLicenses => 'التراخيص';
   @override
   String get aboutOpenSource => 'تم إصدار هذا التطبيق كمصدر مفتوح على GitHub. لا تتردد في المساهمة في الكود، أو إطلاق تطبيق خاص بمدينتك.';
+  @override
+  String get aboutOpenSourceTitle => 'مفتوح المصدر';
+  @override
+  String get aboutSendFeedback => 'أرسل لنا ملاحظاتك';
   @override
   String get menuAbout => 'من نحن';
   @override
@@ -94,6 +100,22 @@ class CoreLocalizationsAr extends CoreLocalizations {
   String get titleError => 'خطأ';
   @override
   String get markAllAsRead => 'تعليم الكل كمقروء';
+  @override
+  String get initStepStarting => 'جارٍ البدء';
+  @override
+  String get initStepInitializing => 'جارٍ التهيئة';
+  @override
+  String get initStepLoadingMaps => 'جارٍ تحميل الخرائط';
+  @override
+  String get initStepLoadingRoutes => 'جارٍ تحميل المسارات';
+  @override
+  String get initStepAlmostReady => 'أوشكنا على الانتهاء';
+  @override
+  String get errorUnableToStart => 'تعذر بدء التشغيل';
+  @override
+  String get errorUnexpected => 'حدث خطأ غير متوقع';
+  @override
+  String get poweredByTrufi => 'مدعوم من جمعية Trufi';
   @override
   String unreadCount(int count) => '${count} غير مقروء';
 }
@@ -313,6 +335,12 @@ class HomeScreenLocalizationsAr extends HomeScreenLocalizations {
   @override
   String get liveVehiclesStateOff => 'معطّل';
   @override
+  String get placeOrigin => 'نقطة الانطلاق';
+  @override
+  String get placeDestination => 'الوجهة';
+  @override
+  String get resolvingLocation => 'جارٍ البحث عن اسم المكان…';
+  @override
   String durationMinutes(int minutes) => '${minutes} دقيقة';
   @override
   String durationHoursMinutes(int hours, int minutes) => '${hours} س ${minutes} د';
@@ -356,6 +384,8 @@ class HomeScreenLocalizationsAr extends HomeScreenLocalizations {
   String moreDepartures(int count) => '+${count} المزيد';
   @override
   String departsAt(String time) => 'يغادر ${time}';
+  @override
+  String providerNoOptions(String provider) => 'لا يحتوي مزوّد “${provider}” على خيارات قابلة للتعديل.';
 }
 
 class _HomeScreenLocalizationsArDelegate extends LocalizationsDelegate<HomeScreenLocalizations> {
@@ -423,9 +453,13 @@ class NavigationLocalizationsAr extends NavigationLocalizations {
   @override
   String get navDestination => 'الوجهة';
   @override
+  String get navRoute => 'المسار';
+  @override
   String navStops(int count) => '${count} محطة';
   @override
   String navExitAt(String stopName) => 'انزل عند ${stopName}';
+  @override
+  String navStopsRemaining(int count) => 'المحطات المتبقية: ${count}';
 }
 
 class _NavigationLocalizationsArDelegate extends LocalizationsDelegate<NavigationLocalizations> {
@@ -671,11 +705,25 @@ class RoutingLocalizationsAr extends RoutingLocalizations {
   @override
   String get serviceTomorrow => 'غدًا';
   @override
+  String get trufiPlannerLocalDescription => 'يعمل دون اتصال باستخدام بيانات GTFS المضمّنة في التطبيق';
+  @override
+  String get trufiPlannerRemoteDescription => 'محرك التوجيه الخاص بنا مقدَّم من خادمنا';
+  @override
+  String get trufiPlannerInfoTitle => 'حول Trufi Planner';
+  @override
+  String get trufiPlannerInfoIntro => 'Trufi Planner هو محرك التوجيه الخاص بنا (وليس OTP).';
+  @override
+  String get trufiPlannerInfoLocalBody => 'على الهاتف يعمل دون اتصال بالإنترنت بالكامل، باستخدام بيانات GTFS المضمّنة في التطبيق — وقد تختلف النتائج عن المحركات العاملة عبر الإنترنت.';
+  @override
+  String get trufiPlannerInfoRemoteBody => 'تستعلم نسخة الويب هذه من خادمنا؛ وقد تختلف النتائج عن OTP لأنها تستخدم خوارزمية وبيانات مختلفة.';
+  @override
   String serviceActiveClosesAt(String time) => 'نشط · يغلق في ${time}';
   @override
   String serviceClosedOpensAt(String time) => 'مغلق · يفتح في ${time}';
   @override
   String serviceClosedOpensDayAt(String day, String time) => 'مغلق · يفتح ${day} في ${time}';
+  @override
+  String otpOnlineDescription(String version) => 'OpenTripPlanner ${version} (عبر الإنترنت)';
 }
 
 class _RoutingLocalizationsArDelegate extends LocalizationsDelegate<RoutingLocalizations> {
@@ -754,6 +802,12 @@ class SavedPlacesLocalizationsAr extends SavedPlacesLocalizations {
   String get tapToSelectLocation => 'انقر للتحديد على الخريطة';
   @override
   String get change => 'تغيير';
+  @override
+  String get errorLoadingPlaces => 'خطأ في تحميل الأماكن';
+  @override
+  String get retry => 'إعادة المحاولة';
+  @override
+  String get history => 'السجل';
   @override
   String removePlaceConfirmation(String placeName) => 'هل أنت متأكد أنك تريد إزالة ${placeName}؟';
 }
@@ -899,9 +953,57 @@ class TransportListLocalizationsAr extends TransportListLocalizations {
   @override
   String get loadingRoute => 'جارٍ تحميل الخط...';
   @override
+  String get otherAgencies => 'أخرى';
+  @override
+  String get defaultModeBus => 'حافلة';
+  @override
+  String get mapSettingsTitle => 'إعدادات الخريطة';
+  @override
+  String get mapTypeLabel => 'نوع الخريطة';
+  @override
+  String get applyChanges => 'تطبيق التغييرات';
+  @override
+  String get stopStart => 'البداية';
+  @override
+  String get stopEnd => 'النهاية';
+  @override
+  String get stopInfoNotAvailable => 'معلومات المحطات غير متوفرة لهذا المسار';
+  @override
+  String get errorLoadingRoutes => 'تعذر تحميل المسارات';
+  @override
+  String get retry => 'إعادة المحاولة';
+  @override
+  String get qrShareSubtitle => 'امسح الرمز لفتح مسارات هذا المشغّل';
+  @override
+  String get copyQrImage => 'نسخ رمز QR';
+  @override
+  String get copyQrImageFailed => 'تعذر نسخ رمز QR';
+  @override
+  String get modeTram => 'ترام';
+  @override
+  String get modeSubway => 'مترو';
+  @override
+  String get modeRail => 'قطار';
+  @override
+  String get modeBus => 'حافلة';
+  @override
+  String get modeFerry => 'عبّارة';
+  @override
+  String get modeCableTram => 'ترام كابلي';
+  @override
+  String get modeAerialLift => 'تلفريك';
+  @override
+  String get modeFunicular => 'قطار جبلي مائل';
+  @override
+  String get modeTrolleybus => 'حافلة كهربائية';
+  @override
+  String get modeMonorail => 'قطار أحادي السكة';
+  @override
   String stops(int count) => '${count} محطة';
   @override
   String routeCount(int count) => '${count} خط';
+  @override
+  String shareRouteMessage(String uri) => 'مشاركة: ${uri}';
 }
 
 class _TransportListLocalizationsArDelegate extends LocalizationsDelegate<TransportListLocalizations> {
