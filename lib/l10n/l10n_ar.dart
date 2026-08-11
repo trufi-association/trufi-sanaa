@@ -63,6 +63,9 @@ class _AboutLocalizationsArDelegate extends LocalizationsDelegate<AboutLocalizat
 
 /// CoreLocalizations in `ar`.
 class CoreLocalizationsAr extends CoreLocalizations {
+  @override
+  String get errorNoScreensRegistered => 'لا توجد شاشات مسجلة';
+
   CoreLocalizationsAr([String locale = 'ar']) : super(locale);
   @override
   String get appName => 'تروفي';
@@ -401,6 +404,18 @@ class _HomeScreenLocalizationsArDelegate extends LocalizationsDelegate<HomeScree
 
 /// NavigationLocalizations in `ar`.
 class NavigationLocalizationsAr extends NavigationLocalizations {
+  @override
+  String navDistanceMeters(String value) => '$value م';
+
+  @override
+  String navDistanceKilometers(String value) => '$value كم';
+
+  @override
+  String navDurationMinutes(int minutes) => '$minutes د';
+
+  @override
+  String navDurationHoursMinutes(int hours, int minutes) => '$hours س $minutes د';
+
   NavigationLocalizationsAr([String locale = 'ar']) : super(locale);
   @override
   String get navExitNavigation => 'إنهاء الملاحة';
@@ -723,7 +738,14 @@ class RoutingLocalizationsAr extends RoutingLocalizations {
   @override
   String serviceClosedOpensDayAt(String day, String time) => 'مغلق · يفتح ${day} في ${time}';
   @override
-  String otpOnlineDescription(String version) => 'OpenTripPlanner ${version} (عبر الإنترنت)';
+  String get otpOnlineDescription =>
+      'يبحث عن المسارات عبر خدمة على الإنترنت. قد تتوفر لديه معلومات أحدث.';
+
+  @override
+  String distanceKilometers(String value) => '$value كم';
+
+  @override
+  String distanceMeters(String value) => '$value م';
 }
 
 class _RoutingLocalizationsArDelegate extends LocalizationsDelegate<RoutingLocalizations> {
@@ -739,6 +761,9 @@ class _RoutingLocalizationsArDelegate extends LocalizationsDelegate<RoutingLocal
 
 /// SavedPlacesLocalizations in `ar`.
 class SavedPlacesLocalizationsAr extends SavedPlacesLocalizations {
+  @override
+  String placeAlreadySaved(String placeName) => '"$placeName" محفوظ مسبقًا في هذا الموقع';
+
   SavedPlacesLocalizationsAr([String locale = 'ar']) : super(locale);
   @override
   String get menuSavedPlaces => 'أماكنك';
@@ -825,6 +850,12 @@ class _SavedPlacesLocalizationsArDelegate extends LocalizationsDelegate<SavedPla
 
 /// SettingsLocalizations in `ar`.
 class SettingsLocalizationsAr extends SettingsLocalizations {
+  @override
+  String get settingsWorksOffline => 'يعمل بدون اتصال';
+
+  @override
+  String get settingsNeedsInternet => 'يتطلب اتصالًا بالإنترنت';
+
   SettingsLocalizationsAr([String locale = 'ar']) : super(locale);
   @override
   String get onboardingTitle => 'مرحبا بك!';
@@ -923,6 +954,12 @@ class _SettingsLocalizationsArDelegate extends LocalizationsDelegate<SettingsLoc
 
 /// TransportListLocalizations in `ar`.
 class TransportListLocalizationsAr extends TransportListLocalizations {
+  @override
+  String distanceKilometers(String value) => '$value كم';
+
+  @override
+  String distanceMeters(String value) => '$value م';
+
   TransportListLocalizationsAr([String locale = 'ar']) : super(locale);
   @override
   String get menuTransportList => 'الخطوط';
