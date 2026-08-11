@@ -58,6 +58,14 @@ final List<IRoutingProvider> _routingEngines = [
     TrufiPlannerProvider(
       config: const TrufiPlannerConfig.local(
         gtfsAsset: 'assets/routing/sanaa.gtfs.zip',
+        // OTP parity (~20 min access walk; Cochabamba prod uses
+        // accessEgress.maxDuration 20m). The 800 m default leaves most of
+        // Sana'a's periphery unplannable: 33% of the served area is within
+        // 800 m of a stop vs 48% within 1500 m (issue #2). Note the core
+        // suppresses transfer options whenever a direct exists, so a far
+        // direct boarding can replace short-walk transfer alternatives —
+        // deliberate core behavior (one fare per ride) this radius amplifies.
+        maxWalkingDistance: 1500,
       ),
     ),
 ];
