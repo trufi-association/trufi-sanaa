@@ -92,7 +92,7 @@ dependencies:
       ref: v5.22.0
       path: packages/trufi_core_poi_layers
   latlong2: ^0.9.1
-  maplibre_gl: ^0.26.1
+  maplibre_gl: ^0.26.2
 
 dev_dependencies:
   flutter_test:

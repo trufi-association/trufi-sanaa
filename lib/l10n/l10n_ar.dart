@@ -720,9 +720,9 @@ class RoutingLocalizationsAr extends RoutingLocalizations {
   @override
   String get serviceTomorrow => 'غدًا';
   @override
-  String get trufiPlannerLocalDescription => 'يعمل دون اتصال باستخدام بيانات GTFS المضمّنة في التطبيق';
+  String get trufiPlannerLocalDescription => 'يبحث عن المسارات باستخدام البيانات المحفوظة على جهازك.';
   @override
-  String get trufiPlannerRemoteDescription => 'محرك التوجيه الخاص بنا مقدَّم من خادمنا';
+  String get trufiPlannerRemoteDescription => 'يبحث عن المسارات عبر خادم Trufi على الإنترنت.';
   @override
   String get trufiPlannerInfoTitle => 'حول Trufi Planner';
   @override
@@ -914,9 +914,9 @@ class SettingsLocalizationsAr extends SettingsLocalizations {
   @override
   String get settingsSelectMapType => 'اختر نوع الخريطة المفضل لديك:';
   @override
-  String get settingsRouting => 'تحديد المسارات';
+  String get settingsRouting => 'البحث عن المسارات';
   @override
-  String get settingsSelectRoutingEngine => 'اختر محرك تحديد المسارات المفضل لديك:';
+  String get settingsSelectRoutingEngine => 'اختر الخدمة المستخدمة لحساب مساراتك.';
   @override
   String get settingsPrivacy => 'الخصوصية';
   @override
