@@ -58,6 +58,10 @@ final List<IRoutingProvider> _routingEngines = [
     TrufiPlannerProvider(
       config: const TrufiPlannerConfig.local(
         gtfsAsset: 'assets/routing/sanaa.gtfs.zip',
+        // OTP parity (~20 min access walk). The 800 m default leaves most
+        // of Sana'a's periphery unplannable: only 24% of the served area
+        // is within 500 m of a stop, 47% within 1500 m (issue #2).
+        maxWalkingDistance: 1500,
       ),
     ),
 ];
