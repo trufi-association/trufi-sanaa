@@ -26,5 +26,6 @@
   "initStepLoadingMaps": "جارٍ تحميل الخرائط",
   "initStepLoadingRoutes": "جارٍ تحميل المسارات",
   "initStepStarting": "جارٍ البدء",
-  "poweredByTrufi": "مدعوم من جمعية Trufi"
+  "poweredByTrufi": "مدعوم من جمعية Trufi",
+  "errorNoScreensRegistered": "لا توجد شاشات مسجلة"
 }

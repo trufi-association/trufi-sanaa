@@ -90,5 +90,6 @@
   "selectAll": "الكل",
   "clearAll": "مسح",
   "typesAvailable": "{count} نوع متاح",
-  "typesActive": "{enabled} من {total} نشط"
+  "typesActive": "{enabled} من {total} نشط",
+  "copiedToClipboard": "تم النسخ"
 }

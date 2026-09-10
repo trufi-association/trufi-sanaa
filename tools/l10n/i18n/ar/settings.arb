@@ -28,8 +28,8 @@
   "settingsThemeSystem": "افتراضي النظام",
   "settingsMap": "الخريطة",
   "settingsSelectMapType": "اختر نوع الخريطة المفضل لديك:",
-  "settingsRouting": "تحديد المسارات",
-  "settingsSelectRoutingEngine": "اختر محرك تحديد المسارات المفضل لديك:",
+  "settingsRouting": "البحث عن المسارات",
+  "settingsSelectRoutingEngine": "اختر الخدمة المستخدمة لحساب مساراتك.",
   "settingsPrivacy": "الخصوصية",
   "settingsPrivacySubtitle": "ساعدنا في تحسين التطبيق",
   "settingsPrivacyShareData": "مشاركة بيانات الاستخدام المجهولة",
@@ -40,5 +40,7 @@
   "engineOfflineDescription": "تحديد مسارات يعتمد على GTFS. يعمل بدون إنترنت.",
   "limitationRequiresInternet": "يتطلب اتصالا بالإنترنت",
   "limitationSlower": "استجابة أبطأ",
-  "limitationNoWalkingRoute": "لا يوجد مسار مشي على الخريطة"
+  "limitationNoWalkingRoute": "لا يوجد مسار مشي على الخريطة",
+  "settingsWorksOffline": "يعمل بدون اتصال",
+  "settingsNeedsInternet": "يتطلب اتصالًا بالإنترنت"
 }
