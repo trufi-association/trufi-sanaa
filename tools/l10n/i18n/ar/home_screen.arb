@@ -103,8 +103,6 @@
   "buttonRetry": "إعادة المحاولة",
   "buttonSettings": "الإعدادات",
   "findingRoutes": "جارٍ البحث عن المسارات...",
-  "moreDepartures": "+{count} المزيد",
-  "otherDepartures": "رحلات مغادرة أخرى",
   "departsAt": "يغادر {time}",
   "routingProvider": "مزود التوجيه",
   "autoFallback": "التبديل التلقائي",
@@ -125,5 +123,12 @@
   "placeDestination": "الوجهة",
   "placeOrigin": "نقطة الانطلاق",
   "providerNoOptions": "لا يحتوي مزوّد “{provider}” على خيارات قابلة للتعديل.",
-  "resolvingLocation": "جارٍ البحث عن اسم المكان…"
+  "resolvingLocation": "جارٍ البحث عن اسم المكان…",
+  "liveVehicleTitle": "حافلة مباشرة",
+  "liveVehicleRouteTitle": "الخط {route}",
+  "liveVehicleLiveBadge": "مباشر",
+  "liveVehicleSpeed": "{speed} كم/س",
+  "liveVehicleUpdatedSeconds": "آخر تحديث قبل {seconds} ث",
+  "liveVehicleUpdatedMinutes": "آخر تحديث قبل {minutes} د",
+  "copiedToClipboard": "تم النسخ"
 }

@@ -18,11 +18,13 @@
   "serviceClosedOpensDayAt": "مغلق · يفتح {day} في {time}",
   "serviceClosed": "مغلق",
   "serviceTomorrow": "غدًا",
-  "otpOnlineDescription": "OpenTripPlanner {version} (عبر الإنترنت)",
+  "otpOnlineDescription": "يبحث عن المسارات عبر خدمة على الإنترنت. قد تتوفر لديه معلومات أحدث.",
   "trufiPlannerInfoIntro": "Trufi Planner هو محرك التوجيه الخاص بنا (وليس OTP).",
   "trufiPlannerInfoLocalBody": "على الهاتف يعمل دون اتصال بالإنترنت بالكامل، باستخدام بيانات GTFS المضمّنة في التطبيق — وقد تختلف النتائج عن المحركات العاملة عبر الإنترنت.",
   "trufiPlannerInfoRemoteBody": "تستعلم نسخة الويب هذه من خادمنا؛ وقد تختلف النتائج عن OTP لأنها تستخدم خوارزمية وبيانات مختلفة.",
   "trufiPlannerInfoTitle": "حول Trufi Planner",
-  "trufiPlannerLocalDescription": "يعمل دون اتصال باستخدام بيانات GTFS المضمّنة في التطبيق",
-  "trufiPlannerRemoteDescription": "محرك التوجيه الخاص بنا مقدَّم من خادمنا"
+  "trufiPlannerLocalDescription": "يبحث عن المسارات باستخدام البيانات المحفوظة على جهازك.",
+  "trufiPlannerRemoteDescription": "يبحث عن المسارات عبر خادم Trufi على الإنترنت.",
+  "distanceKilometers": "{value} كم",
+  "distanceMeters": "{value} م"
 }

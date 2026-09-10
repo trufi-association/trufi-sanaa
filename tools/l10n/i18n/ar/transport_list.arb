@@ -39,5 +39,8 @@
   "shareRouteMessage": "مشاركة: {uri}",
   "stopEnd": "النهاية",
   "stopInfoNotAvailable": "معلومات المحطات غير متوفرة لهذا المسار",
-  "stopStart": "البداية"
+  "stopStart": "البداية",
+  "distanceKilometers": "{value} كم",
+  "distanceMeters": "{value} م",
+  "copiedToClipboard": "تم النسخ"
 }

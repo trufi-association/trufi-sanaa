@@ -13,6 +13,7 @@ import 'package:trufi_core_navigation/l10n/navigation_localizations.dart';
 import 'package:trufi_core_poi_layers/src/l10n/poi_layers_localizations.dart';
 import 'package:trufi_core_routing/l10n/routing_localizations.dart';
 import 'package:trufi_core_saved_places/l10n/saved_places_localizations.dart';
+import 'package:trufi_core_search_locations/l10n/search_locations_localizations.dart';
 import 'package:trufi_core_settings/l10n/settings_localizations.dart';
 import 'package:trufi_core_transport_list/l10n/transport_list_localizations.dart';
 import 'package:trufi_core_ui/src/l10n/core_localizations.dart';
@@ -63,9 +64,6 @@ class _AboutLocalizationsArDelegate extends LocalizationsDelegate<AboutLocalizat
 
 /// CoreLocalizations in `ar`.
 class CoreLocalizationsAr extends CoreLocalizations {
-  @override
-  String get errorNoScreensRegistered => 'لا توجد شاشات مسجلة';
-
   CoreLocalizationsAr([String locale = 'ar']) : super(locale);
   @override
   String get appName => 'تروفي';
@@ -97,6 +95,8 @@ class CoreLocalizationsAr extends CoreLocalizations {
   String get actionRetry => 'إعادة المحاولة';
   @override
   String get errorPageNotFound => 'الصفحة غير موجودة';
+  @override
+  String get errorNoScreensRegistered => 'لا توجد شاشات مسجلة';
   @override
   String get actionGoHome => 'الذهاب إلى الرئيسية';
   @override
@@ -304,8 +304,6 @@ class HomeScreenLocalizationsAr extends HomeScreenLocalizations {
   @override
   String get findingRoutes => 'جارٍ البحث عن المسارات...';
   @override
-  String get otherDepartures => 'رحلات مغادرة أخرى';
-  @override
   String get routingProvider => 'مزود التوجيه';
   @override
   String get autoFallback => 'التبديل التلقائي';
@@ -338,11 +336,17 @@ class HomeScreenLocalizationsAr extends HomeScreenLocalizations {
   @override
   String get liveVehiclesStateOff => 'معطّل';
   @override
+  String get liveVehicleTitle => 'حافلة مباشرة';
+  @override
+  String get liveVehicleLiveBadge => 'مباشر';
+  @override
   String get placeOrigin => 'نقطة الانطلاق';
   @override
   String get placeDestination => 'الوجهة';
   @override
   String get resolvingLocation => 'جارٍ البحث عن اسم المكان…';
+  @override
+  String get copiedToClipboard => 'تم النسخ';
   @override
   String durationMinutes(int minutes) => '${minutes} دقيقة';
   @override
@@ -384,9 +388,15 @@ class HomeScreenLocalizationsAr extends HomeScreenLocalizations {
   @override
   String routesFound(int count) => 'تم العثور على ${count} مسار';
   @override
-  String moreDepartures(int count) => '+${count} المزيد';
-  @override
   String departsAt(String time) => 'يغادر ${time}';
+  @override
+  String liveVehicleRouteTitle(String route) => 'الخط ${route}';
+  @override
+  String liveVehicleSpeed(int speed) => '${speed} كم/س';
+  @override
+  String liveVehicleUpdatedSeconds(int seconds) => 'آخر تحديث قبل ${seconds} ث';
+  @override
+  String liveVehicleUpdatedMinutes(int minutes) => 'آخر تحديث قبل ${minutes} د';
   @override
   String providerNoOptions(String provider) => 'لا يحتوي مزوّد “${provider}” على خيارات قابلة للتعديل.';
 }
@@ -404,18 +414,6 @@ class _HomeScreenLocalizationsArDelegate extends LocalizationsDelegate<HomeScree
 
 /// NavigationLocalizations in `ar`.
 class NavigationLocalizationsAr extends NavigationLocalizations {
-  @override
-  String navDistanceMeters(String value) => '$value م';
-
-  @override
-  String navDistanceKilometers(String value) => '$value كم';
-
-  @override
-  String navDurationMinutes(int minutes) => '$minutes د';
-
-  @override
-  String navDurationHoursMinutes(int hours, int minutes) => '$hours س $minutes د';
-
   NavigationLocalizationsAr([String locale = 'ar']) : super(locale);
   @override
   String get navExitNavigation => 'إنهاء الملاحة';
@@ -475,6 +473,14 @@ class NavigationLocalizationsAr extends NavigationLocalizations {
   String navExitAt(String stopName) => 'انزل عند ${stopName}';
   @override
   String navStopsRemaining(int count) => 'المحطات المتبقية: ${count}';
+  @override
+  String navDistanceMeters(String value) => '${value} م';
+  @override
+  String navDistanceKilometers(String value) => '${value} كم';
+  @override
+  String navDurationMinutes(int minutes) => '${minutes} د';
+  @override
+  String navDurationHoursMinutes(int hours, int minutes) => '${hours} س ${minutes} د';
 }
 
 class _NavigationLocalizationsArDelegate extends LocalizationsDelegate<NavigationLocalizations> {
@@ -668,6 +674,8 @@ class POILayersLocalizationsAr extends POILayersLocalizations {
   @override
   String get clearAll => 'مسح';
   @override
+  String get copiedToClipboard => 'تم النسخ';
+  @override
   String placesCount(int count) => '${count} مكان';
   @override
   String typesAvailable(int count) => '${count} نوع متاح';
@@ -732,20 +740,17 @@ class RoutingLocalizationsAr extends RoutingLocalizations {
   @override
   String get trufiPlannerInfoRemoteBody => 'تستعلم نسخة الويب هذه من خادمنا؛ وقد تختلف النتائج عن OTP لأنها تستخدم خوارزمية وبيانات مختلفة.';
   @override
+  String get otpOnlineDescription => 'يبحث عن المسارات عبر خدمة على الإنترنت. قد تتوفر لديه معلومات أحدث.';
+  @override
   String serviceActiveClosesAt(String time) => 'نشط · يغلق في ${time}';
   @override
   String serviceClosedOpensAt(String time) => 'مغلق · يفتح في ${time}';
   @override
   String serviceClosedOpensDayAt(String day, String time) => 'مغلق · يفتح ${day} في ${time}';
   @override
-  String get otpOnlineDescription =>
-      'يبحث عن المسارات عبر خدمة على الإنترنت. قد تتوفر لديه معلومات أحدث.';
-
+  String distanceKilometers(String value) => '${value} كم';
   @override
-  String distanceKilometers(String value) => '$value كم';
-
-  @override
-  String distanceMeters(String value) => '$value م';
+  String distanceMeters(String value) => '${value} م';
 }
 
 class _RoutingLocalizationsArDelegate extends LocalizationsDelegate<RoutingLocalizations> {
@@ -761,9 +766,6 @@ class _RoutingLocalizationsArDelegate extends LocalizationsDelegate<RoutingLocal
 
 /// SavedPlacesLocalizations in `ar`.
 class SavedPlacesLocalizationsAr extends SavedPlacesLocalizations {
-  @override
-  String placeAlreadySaved(String placeName) => '"$placeName" محفوظ مسبقًا في هذا الموقع';
-
   SavedPlacesLocalizationsAr([String locale = 'ar']) : super(locale);
   @override
   String get menuSavedPlaces => 'أماكنك';
@@ -834,7 +836,11 @@ class SavedPlacesLocalizationsAr extends SavedPlacesLocalizations {
   @override
   String get history => 'السجل';
   @override
+  String get copiedToClipboard => 'تم النسخ';
+  @override
   String removePlaceConfirmation(String placeName) => 'هل أنت متأكد أنك تريد إزالة ${placeName}؟';
+  @override
+  String placeAlreadySaved(String placeName) => '"${placeName}" محفوظ مسبقًا في هذا الموقع';
 }
 
 class _SavedPlacesLocalizationsArDelegate extends LocalizationsDelegate<SavedPlacesLocalizations> {
@@ -848,14 +854,50 @@ class _SavedPlacesLocalizationsArDelegate extends LocalizationsDelegate<SavedPla
   bool shouldReload(_SavedPlacesLocalizationsArDelegate old) => false;
 }
 
+/// SearchLocationsLocalizations in `ar`.
+class SearchLocationsLocalizationsAr extends SearchLocationsLocalizations {
+  SearchLocationsLocalizationsAr([String locale = 'ar']) : super(locale);
+  @override
+  String get selectOrigin => 'اختر نقطة الانطلاق';
+  @override
+  String get selectDestination => 'اختر الوجهة';
+  @override
+  String get searchOrigin => 'ابحث عن نقطة الانطلاق...';
+  @override
+  String get searchDestination => 'ابحث عن الوجهة...';
+  @override
+  String get yourLocation => 'موقعك الحالي';
+  @override
+  String get chooseOnMap => 'اختر على الخريطة';
+  @override
+  String get yourPlaces => 'أماكنك';
+  @override
+  String get searchResults => 'نتائج البحث';
+  @override
+  String get noResultsFound => 'لا توجد نتائج';
+  @override
+  String get searchCornersHint => 'ابحث عن تقاطع...';
+  @override
+  String get copiedToClipboard => 'تم النسخ';
+  @override
+  String get originFieldLabel => 'من';
+  @override
+  String get destinationFieldLabel => 'إلى';
+}
+
+class _SearchLocationsLocalizationsArDelegate extends LocalizationsDelegate<SearchLocationsLocalizations> {
+  const _SearchLocationsLocalizationsArDelegate();
+  @override
+  bool isSupported(Locale locale) => locale.languageCode == 'ar';
+  @override
+  Future<SearchLocationsLocalizations> load(Locale locale) =>
+      SynchronousFuture<SearchLocationsLocalizations>(SearchLocationsLocalizationsAr());
+  @override
+  bool shouldReload(_SearchLocationsLocalizationsArDelegate old) => false;
+}
+
 /// SettingsLocalizations in `ar`.
 class SettingsLocalizationsAr extends SettingsLocalizations {
-  @override
-  String get settingsWorksOffline => 'يعمل بدون اتصال';
-
-  @override
-  String get settingsNeedsInternet => 'يتطلب اتصالًا بالإنترنت';
-
   SettingsLocalizationsAr([String locale = 'ar']) : super(locale);
   @override
   String get onboardingTitle => 'مرحبا بك!';
@@ -939,6 +981,10 @@ class SettingsLocalizationsAr extends SettingsLocalizations {
   String get limitationSlower => 'استجابة أبطأ';
   @override
   String get limitationNoWalkingRoute => 'لا يوجد مسار مشي على الخريطة';
+  @override
+  String get settingsWorksOffline => 'يعمل بدون اتصال';
+  @override
+  String get settingsNeedsInternet => 'يتطلب اتصالًا بالإنترنت';
 }
 
 class _SettingsLocalizationsArDelegate extends LocalizationsDelegate<SettingsLocalizations> {
@@ -954,12 +1000,6 @@ class _SettingsLocalizationsArDelegate extends LocalizationsDelegate<SettingsLoc
 
 /// TransportListLocalizations in `ar`.
 class TransportListLocalizationsAr extends TransportListLocalizations {
-  @override
-  String distanceKilometers(String value) => '$value كم';
-
-  @override
-  String distanceMeters(String value) => '$value م';
-
   TransportListLocalizationsAr([String locale = 'ar']) : super(locale);
   @override
   String get menuTransportList => 'الخطوط';
@@ -1036,11 +1076,17 @@ class TransportListLocalizationsAr extends TransportListLocalizations {
   @override
   String get modeMonorail => 'قطار أحادي السكة';
   @override
+  String get copiedToClipboard => 'تم النسخ';
+  @override
   String stops(int count) => '${count} محطة';
   @override
   String routeCount(int count) => '${count} خط';
   @override
   String shareRouteMessage(String uri) => 'مشاركة: ${uri}';
+  @override
+  String distanceKilometers(String value) => '${value} كم';
+  @override
+  String distanceMeters(String value) => '${value} م';
 }
 
 class _TransportListLocalizationsArDelegate extends LocalizationsDelegate<TransportListLocalizations> {
@@ -1063,6 +1109,7 @@ const List<LocalizationsDelegate<dynamic>> arLocalizationsDelegates = [
   const _POILayersLocalizationsArDelegate(),
   const _RoutingLocalizationsArDelegate(),
   const _SavedPlacesLocalizationsArDelegate(),
+  const _SearchLocationsLocalizationsArDelegate(),
   const _SettingsLocalizationsArDelegate(),
   const _TransportListLocalizationsArDelegate(),
 ];

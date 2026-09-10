@@ -1,0 +1,16 @@
+{
+  "@@locale": "ar",
+  "selectOrigin": "اختر نقطة الانطلاق",
+  "selectDestination": "اختر الوجهة",
+  "searchOrigin": "ابحث عن نقطة الانطلاق...",
+  "searchDestination": "ابحث عن الوجهة...",
+  "yourLocation": "موقعك الحالي",
+  "chooseOnMap": "اختر على الخريطة",
+  "yourPlaces": "أماكنك",
+  "searchResults": "نتائج البحث",
+  "noResultsFound": "لا توجد نتائج",
+  "searchCornersHint": "ابحث عن تقاطع...",
+  "copiedToClipboard": "تم النسخ",
+  "originFieldLabel": "من",
+  "destinationFieldLabel": "إلى"
+}

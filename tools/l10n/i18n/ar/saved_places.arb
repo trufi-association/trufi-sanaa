@@ -34,5 +34,7 @@
   "change": "تغيير",
   "errorLoadingPlaces": "خطأ في تحميل الأماكن",
   "history": "السجل",
-  "retry": "إعادة المحاولة"
+  "retry": "إعادة المحاولة",
+  "placeAlreadySaved": "\"{placeName}\" محفوظ مسبقًا في هذا الموقع",
+  "copiedToClipboard": "تم النسخ"
 }

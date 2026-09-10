@@ -28,5 +28,9 @@
   "navTransfer": "نقطة التحويل",
   "navDestination": "الوجهة",
   "navRoute": "المسار",
-  "navStopsRemaining": "المحطات المتبقية: {count}"
+  "navStopsRemaining": "المحطات المتبقية: {count}",
+  "navDistanceMeters": "{value} م",
+  "navDistanceKilometers": "{value} كم",
+  "navDurationMinutes": "{minutes} د",
+  "navDurationHoursMinutes": "{hours} س {minutes} د"
 }
