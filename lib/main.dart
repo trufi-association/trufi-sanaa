@@ -66,6 +66,15 @@ final List<IRoutingProvider> _routingEngines = [
         // direct boarding can replace short-walk transfer alternatives —
         // deliberate core behavior (one fare per ride) this radius amplifies.
         maxWalkingDistance: 1500,
+        // Allow trips with two changes of bus (three buses). Sana'a's feed
+        // is 194 short lines, so many north-south trips have no direct line
+        // and no single change: the reporter's trip in issue #2 (second
+        // reopening) needs 7 -> 14 -> 14. Two-transfer itineraries are only
+        // searched when nothing with 0 or 1 transfers exists, so trips that
+        // already plan do not change. Measured on 400 random pairs >= 2 km
+        // apart: 54 % plannable with the default (1) -> 77.5 % with 2
+        // (trufi-core#998 / #999).
+        maxTransfers: 2,
       ),
     ),
 ];
