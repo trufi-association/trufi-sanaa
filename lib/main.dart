@@ -66,15 +66,24 @@ final List<IRoutingProvider> _routingEngines = [
         // direct boarding can replace short-walk transfer alternatives —
         // deliberate core behavior (one fare per ride) this radius amplifies.
         maxWalkingDistance: 1500,
-        // Allow trips with two changes of bus (three buses). Sana'a's feed
-        // is 194 short lines, so many north-south trips have no direct line
-        // and no single change: the reporter's trip in issue #2 (second
-        // reopening) needs 7 -> 14 -> 14. Two-transfer itineraries are only
-        // searched when nothing with 0 or 1 transfers exists, so trips that
-        // already plan do not change. Measured on 400 random pairs >= 2 km
-        // apart: 54 % plannable with the default (1) -> 77.5 % with 2
-        // (trufi-core#998 / #999).
-        maxTransfers: 2,
+        // Allow trips with up to four changes of bus (five buses). Sana'a's
+        // feed is 194 short lines, so many trips have no direct line and no
+        // single change: the reporter's trip in issue #2 (second reopening)
+        // needs 7 -> 14 -> 14, and his north-south trip across the city
+        // (third reopening, 45 km) needs 7 -> 7 -> 14 -> 14 -> 14 — nothing
+        // with three changes exists for it in this feed. Multi-transfer
+        // itineraries are only searched when nothing with 0 or 1 transfers
+        // exists, and the search stops at the first number of changes that
+        // reaches the destination, so trips that already plan do not change
+        // (verified: 0 differences on 400 random pairs >= 2 km apart).
+        // Plannable pairs in that sample: 54 % with the default (1), 77.5 %
+        // with 2 (v1.2.0), 90.3 % with 3, 96.3 % with 4, 99.5 % with 5.
+        // Cost of going from 2 to 4 on this feed: +0.45 ms per query on
+        // average, 2.6 ms worst case on desktop (roughly 10-15 ms on a
+        // phone), paid only by the queries that would otherwise return
+        // nothing; ~0.5 MB of transient memory, nothing on disk or at
+        // start-up (trufi-core#998 / #999).
+        maxTransfers: 4,
       ),
     ),
 ];
