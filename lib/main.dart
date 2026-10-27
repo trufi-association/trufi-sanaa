@@ -36,6 +36,17 @@ const _cityName = "Sana'a";
 const _countryName = 'Yemen';
 const _emailContact = 'info@trufi-association.org';
 
+// UI languages (issue #15). Arabic goes FIRST, not just as the default index:
+// core hands `supportedLocales` to MaterialApp, which falls back to the first
+// entry when it cannot resolve a locale, and feeds `defaultLocale` to its
+// fallback-localizations layer. English stays selectable in the onboarding
+// sheet and in settings. Installs that already chose a language keep it:
+// LocaleManager restores the saved preference over this default.
+const localeConfig = TrufiLocaleConfig(
+  supportedLocales: [Locale('ar'), Locale('en')],
+  defaultLocaleIndex: 0,
+);
+
 // POI GeoJSON assets, also used by the offline address search below.
 const _poiAssetPaths = <String>[
   'assets/pois/education.geojson',
@@ -137,14 +148,11 @@ void main() {
     AppConfiguration(
       appName: _appName,
       deepLinkScheme: _deepLinkScheme,
-      // English UI by default, with Arabic (RTL) available in settings.
+      // Arabic (RTL) UI by default, English available in the onboarding
+      // language picker and in settings — see `localeConfig` above.
       // Arabic for all screens is provided APP-SIDE via extraLocalizationsDelegates
       // (see lib/l10n/), so this app uses the official trufi-core — no fork.
-      // To default to Arabic, put Locale('ar') first in supportedLocales.
-      localeConfig: const TrufiLocaleConfig(
-        supportedLocales: [Locale('en'), Locale('ar')],
-        defaultLocaleIndex: 0,
-      ),
+      localeConfig: localeConfig,
       // Pin routing to midday so the offline planner returns results regardless
       // of when the app is opened; the time picker stays hidden.
       routingTimeOverride: const TimeOfDay(hour: 12, minute: 0),

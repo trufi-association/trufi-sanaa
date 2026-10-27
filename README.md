@@ -44,12 +44,15 @@ limited.
 
 ## 🌍 Languages
 
-The app UI currently ships in **English**, while all map and place content (POIs, street and place
-names) is already in **Arabic**.
+The UI ships in **Arabic** (RTL, the default) and **English**. A fresh install starts in Arabic and
+the onboarding sheet lists Arabic first; English can be picked there or later in Settings, and an
+install that already chose a language keeps it. Map and place content (POIs, street and place
+names) is in Arabic, with English names where OpenStreetMap has them.
 
-A fully Arabic **UI** is a planned follow-up: it requires adding `ar` ARB translations to the
-`trufi-core` packages (the core ships `en`/`es`/`de` today, so selecting `ar` would otherwise fall
-back/fail). App-level Arabic strings are already prepared in [`lib/l10n/app_ar.arb`](lib/l10n/app_ar.arb).
+Arabic for every trufi-core screen is provided **app-side**: the translations live in
+[`tools/l10n/i18n/ar/`](tools/l10n/i18n/ar/) and are generated into [`lib/l10n/`](lib/l10n/) with
+`dart run trufi_core_utils:gen_extra_l10n` (see [`tools/l10n/README.md`](tools/l10n/README.md)), so
+the app uses the official trufi-core packages — no fork.
 
 ## 📂 Asset structure
 
