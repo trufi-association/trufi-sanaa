@@ -1,0 +1,23 @@
+{
+  "@@locale": "ar",
+  "online": "متصل",
+  "offline": "غير متصل",
+  "mapSettings": "إعدادات الخريطة",
+  "mapType": "نوع الخريطة",
+  "chooseMapStyle": "اختر نمط الخريطة المفضل لديك",
+  "changeMapType": "تغيير نوع الخريطة",
+  "chooseOnMap": "اختر على الخريطة",
+  "confirmLocation": "تأكيد الموقع",
+  "offlineMapName": "خريطة بدون إنترنت",
+  "offlineMapDescription": "خريطة تعمل بالكامل بدون إنترنت",
+  "vectorMapName": "خريطة متجهة (MapLibre)",
+  "errorLoadingOfflineMap": "خطأ في تحميل الخريطة بدون إنترنت",
+  "retry": "إعادة المحاولة",
+  "vectorMapDescription": "خريطة متجهة بتصميم عصري وأداء أفضل",
+  "lightVectorMapDescription": "خريطة متجهة فاتحة",
+  "darkVectorMapDescription": "خريطة متجهة داكنة",
+  "mapStyleStandardDescription": "خريطة قياسية",
+  "mapStyleLightDescription": "خريطة فاتحة",
+  "mapStyleDarkDescription": "خريطة داكنة",
+  "mapStyleColorfulDescription": "خريطة ملونة"
+}

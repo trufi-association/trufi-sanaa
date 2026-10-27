@@ -104,12 +104,15 @@ final List<IRoutingProvider> _routingEngines = [
 ];
 
 // Map engines: offline only (Sana'a MBTiles). No online tile servers.
-final List<ITrufiMapEngine> _mapEngines = [
+// No `displayName`/`displayDescription` on purpose: without them the engine
+// shows core's localized `offlineMapName`/`offlineMapDescription` (Arabic
+// from tools/l10n/i18n/ar/maps.arb), so the map card of the onboarding and
+// the map settings sheet follow the UI language instead of a hardcoded
+// English label (issue #15). Public for test/maps_l10n_test.dart.
+final List<ITrufiMapEngine> mapEngines = [
   if (!kIsWeb)
     OfflineMapLibreEngine(
       engineId: 'offline_osm_liberty',
-      displayName: 'Standard (offline)',
-      displayDescription: 'Standard offline map',
       config: OfflineMapConfig(
         mbtilesAsset: 'assets/offline/sanaa.mbtiles',
         styleAsset: 'assets/offline/styles/osm-liberty/style.json',
@@ -181,7 +184,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(
           create: (_) => MapEngineManager(
-            engines: _mapEngines,
+            engines: mapEngines,
             defaultCenter: _defaultCenter,
             // Open zoomed into central Sana'a so the street grid is visible.
             defaultZoom: 14,

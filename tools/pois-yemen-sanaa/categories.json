@@ -4,7 +4,7 @@
       "en": "Healthcare",
       "es": "Salud",
       "de": "Gesundheit",
-      "ar": "الصحة"
+      "ar": "الرعاية الصحية"
     },
     "icon": "hospital",
     "subcategories": [
@@ -115,7 +115,7 @@
           "en": "Other Healthcare",
           "es": "Otros Servicios de Salud",
           "de": "Sonstige Gesundheit",
-          "ar": "خدمات صحية أخرى"
+          "ar": "رعاية صحية أخرى"
         },
         "icon": "hospital",
         "color": "#F44336",
@@ -234,7 +234,7 @@
           "en": "Libraries",
           "es": "Bibliotecas",
           "de": "Bibliotheken",
-          "ar": "مكتبات عامة"
+          "ar": "مكتبات"
         },
         "icon": "library",
         "color": "#5C6BC0",
@@ -287,7 +287,7 @@
       "en": "Transport",
       "es": "Transporte",
       "de": "Verkehr",
-      "ar": "المواصلات"
+      "ar": "النقل"
     },
     "icon": "bus",
     "subcategories": [
@@ -331,7 +331,7 @@
           "en": "Railway",
           "es": "Ferrocarril",
           "de": "Eisenbahn",
-          "ar": "سكك حديدية"
+          "ar": "السكك الحديدية"
         },
         "icon": "rail",
         "color": "#455A64",
@@ -374,7 +374,7 @@
           "en": "Taxi & Car Rental",
           "es": "Taxi y Alquiler de Autos",
           "de": "Taxi & Autovermietung",
-          "ar": "تاكسي وتأجير سيارات"
+          "ar": "سيارات أجرة وتأجير"
         },
         "icon": "car",
         "color": "#FFC107",
@@ -395,7 +395,7 @@
           "en": "Ferry",
           "es": "Ferry",
           "de": "Fähre",
-          "ar": "عبّارات"
+          "ar": "عبّارة"
         },
         "icon": "ferry",
         "color": "#0097A7",
@@ -467,7 +467,7 @@
           "en": "Cafes",
           "es": "Cafeterías",
           "de": "Cafés",
-          "ar": "مقاهي"
+          "ar": "مقاهٍ"
         },
         "icon": "cafe",
         "color": "#795548",
@@ -508,7 +508,7 @@
           "en": "Bars & Pubs",
           "es": "Bares",
           "de": "Bars & Kneipen",
-          "ar": "بارات"
+          "ar": "حانات"
         },
         "icon": "bar",
         "color": "#7B1FA2",
@@ -560,7 +560,7 @@
           "en": "Supermarkets",
           "es": "Supermercados",
           "de": "Supermärkte",
-          "ar": "سوبرماركت وبقالات"
+          "ar": "محلات سوبر ماركت"
         },
         "icon": "grocery",
         "color": "#7B1FA2",
@@ -602,7 +602,7 @@
           "en": "Food Shops",
           "es": "Tiendas de Alimentos",
           "de": "Lebensmittelgeschäfte",
-          "ar": "محلات أغذية وحلويات"
+          "ar": "محلات أغذية"
         },
         "icon": "bakery",
         "color": "#8BC34A",
@@ -641,7 +641,7 @@
           "en": "Marketplaces",
           "es": "Mercados",
           "de": "Märkte",
-          "ar": "أسواق شعبية"
+          "ar": "أسواق"
         },
         "icon": "shop",
         "color": "#FF7043",
@@ -909,7 +909,7 @@
           "en": "Accommodation",
           "es": "Alojamiento",
           "de": "Unterkunft",
-          "ar": "فنادق وإقامة"
+          "ar": "أماكن إقامة"
         },
         "icon": "lodging",
         "color": "#00897B",
@@ -956,7 +956,7 @@
           "en": "Attractions",
           "es": "Atracciones",
           "de": "Sehenswürdigkeiten",
-          "ar": "معالم ومناطق جذب"
+          "ar": "معالم سياحية"
         },
         "icon": "attraction",
         "color": "#00BCD4",
@@ -1022,7 +1022,7 @@
       "en": "Finance",
       "es": "Finanzas",
       "de": "Finanzen",
-      "ar": "المال والصرافة"
+      "ar": "المال"
     },
     "icon": "bank",
     "subcategories": [
@@ -1052,7 +1052,7 @@
           "en": "ATMs",
           "es": "Cajeros Automáticos",
           "de": "Geldautomaten",
-          "ar": "صرافات آلية"
+          "ar": "أجهزة صراف آلي"
         },
         "icon": "bank",
         "color": "#43A047",
@@ -1072,7 +1072,7 @@
           "en": "Currency Exchange",
           "es": "Casa de Cambio",
           "de": "Wechselstube",
-          "ar": "صرافة وتحويل أموال"
+          "ar": "صرافة عملات"
         },
         "icon": "bank",
         "color": "#66BB6A",
@@ -1104,7 +1104,7 @@
           "en": "Police",
           "es": "Policía",
           "de": "Polizei",
-          "ar": "شرطة"
+          "ar": "الشرطة"
         },
         "icon": "police",
         "color": "#1565C0",
@@ -1124,7 +1124,7 @@
           "en": "Fire Station",
           "es": "Estación de Bomberos",
           "de": "Feuerwehr",
-          "ar": "الدفاع المدني (إطفاء)"
+          "ar": "الإطفاء"
         },
         "icon": "fire-station",
         "color": "#D32F2F",
@@ -1144,7 +1144,7 @@
           "en": "Ambulance",
           "es": "Ambulancia",
           "de": "Rettungsdienst",
-          "ar": "إسعاف"
+          "ar": "الإسعاف"
         },
         "icon": "hospital",
         "color": "#E53935",
@@ -1166,7 +1166,7 @@
       "en": "Recreation",
       "es": "Recreación",
       "de": "Freizeit",
-      "ar": "الترفيه والرياضة"
+      "ar": "الترفيه"
     },
     "icon": "park",
     "subcategories": [
@@ -1228,7 +1228,7 @@
           "en": "Sports Facilities",
           "es": "Instalaciones Deportivas",
           "de": "Sportanlagen",
-          "ar": "منشآت رياضية"
+          "ar": "مرافق رياضية"
         },
         "icon": "soccer",
         "color": "#2196F3",
@@ -1257,10 +1257,10 @@
       {
         "name": "entertainment",
         "displayName": {
-          "en": "Entertainment & Event Halls",
+          "en": "Entertainment",
           "es": "Entretenimiento y Salones de Eventos",
           "de": "Unterhaltung & Veranstaltungssäle",
-          "ar": "ترفيه وصالات مناسبات"
+          "ar": "ترفيه"
         },
         "icon": "cinema",
         "color": "#9C27B0",
@@ -1332,9 +1332,10 @@
       "en": "Religion",
       "es": "Religión",
       "de": "Religion",
-      "ar": "الدين"
+      "ar": "دور العبادة"
     },
     "icon": "place-of-worship",
+    "color": "#7B1FA2",
     "subcategories": [
       {
         "name": "place_of_worship",
@@ -1408,7 +1409,7 @@
           "en": "Government Offices",
           "es": "Oficinas de Gobierno",
           "de": "Regierungsbüros",
-          "ar": "دوائر حكومية"
+          "ar": "مكاتب حكومية"
         },
         "icon": "town-hall",
         "color": "#455A64",
@@ -1463,7 +1464,7 @@
           "en": "Post Offices",
           "es": "Correos",
           "de": "Postämter",
-          "ar": "بريد"
+          "ar": "مكاتب بريد"
         },
         "icon": "post",
         "color": "#FF8F00",

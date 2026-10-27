@@ -9,6 +9,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:trufi_core_about/l10n/about_localizations.dart';
 import 'package:trufi_core_home_screen/l10n/home_screen_localizations.dart';
+import 'package:trufi_core_maps/l10n/maps_localizations.dart';
 import 'package:trufi_core_navigation/l10n/navigation_localizations.dart';
 import 'package:trufi_core_poi_layers/src/l10n/poi_layers_localizations.dart';
 import 'package:trufi_core_routing/l10n/routing_localizations.dart';
@@ -410,6 +411,62 @@ class _HomeScreenLocalizationsArDelegate extends LocalizationsDelegate<HomeScree
       SynchronousFuture<HomeScreenLocalizations>(HomeScreenLocalizationsAr());
   @override
   bool shouldReload(_HomeScreenLocalizationsArDelegate old) => false;
+}
+
+/// MapsLocalizations in `ar`.
+class MapsLocalizationsAr extends MapsLocalizations {
+  MapsLocalizationsAr([String locale = 'ar']) : super(locale);
+  @override
+  String get online => 'متصل';
+  @override
+  String get offline => 'غير متصل';
+  @override
+  String get mapSettings => 'إعدادات الخريطة';
+  @override
+  String get mapType => 'نوع الخريطة';
+  @override
+  String get chooseMapStyle => 'اختر نمط الخريطة المفضل لديك';
+  @override
+  String get changeMapType => 'تغيير نوع الخريطة';
+  @override
+  String get chooseOnMap => 'اختر على الخريطة';
+  @override
+  String get confirmLocation => 'تأكيد الموقع';
+  @override
+  String get offlineMapName => 'خريطة بدون إنترنت';
+  @override
+  String get offlineMapDescription => 'خريطة تعمل بالكامل بدون إنترنت';
+  @override
+  String get vectorMapName => 'خريطة متجهة (MapLibre)';
+  @override
+  String get errorLoadingOfflineMap => 'خطأ في تحميل الخريطة بدون إنترنت';
+  @override
+  String get retry => 'إعادة المحاولة';
+  @override
+  String get vectorMapDescription => 'خريطة متجهة بتصميم عصري وأداء أفضل';
+  @override
+  String get lightVectorMapDescription => 'خريطة متجهة فاتحة';
+  @override
+  String get darkVectorMapDescription => 'خريطة متجهة داكنة';
+  @override
+  String get mapStyleStandardDescription => 'خريطة قياسية';
+  @override
+  String get mapStyleLightDescription => 'خريطة فاتحة';
+  @override
+  String get mapStyleDarkDescription => 'خريطة داكنة';
+  @override
+  String get mapStyleColorfulDescription => 'خريطة ملونة';
+}
+
+class _MapsLocalizationsArDelegate extends LocalizationsDelegate<MapsLocalizations> {
+  const _MapsLocalizationsArDelegate();
+  @override
+  bool isSupported(Locale locale) => locale.languageCode == 'ar';
+  @override
+  Future<MapsLocalizations> load(Locale locale) =>
+      SynchronousFuture<MapsLocalizations>(MapsLocalizationsAr());
+  @override
+  bool shouldReload(_MapsLocalizationsArDelegate old) => false;
 }
 
 /// NavigationLocalizations in `ar`.
@@ -1105,6 +1162,7 @@ const List<LocalizationsDelegate<dynamic>> arLocalizationsDelegates = [
   const _AboutLocalizationsArDelegate(),
   const _CoreLocalizationsArDelegate(),
   const _HomeScreenLocalizationsArDelegate(),
+  const _MapsLocalizationsArDelegate(),
   const _NavigationLocalizationsArDelegate(),
   const _POILayersLocalizationsArDelegate(),
   const _RoutingLocalizationsArDelegate(),
