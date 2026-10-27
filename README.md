@@ -21,7 +21,9 @@ limited.
 - **Offline routing** — public-transport trip planning from a bundled Sana'a GTFS feed.
 - **Offline search** — address/place search over the bundled POIs (Arabic & English names), no
   geocoding server.
-- **POI layers** — 11 categories of points of interest (healthcare, education, food, government, …).
+- **POI layers** — 12 categories of points of interest (healthcare, education, food, shopping,
+  services, government, …) extracted from OpenStreetMap with
+  [`tools/pois-yemen-sanaa`](tools/pois-yemen-sanaa/).
 - **Step-by-step navigation** for public-transport trips.
 - **Saved places** and a full **transport route list**.
 
@@ -65,9 +67,9 @@ assets/
 │   ├── styles/                      # MapLibre styles (osm-bright/liberty/dark-matter/fiord-color)
 │   └── fonts/                       # Glyph PBFs for the styles
 └── pois/                            # POIs as GeoJSON (Arabic & English names) + metadata.json
-    ├── education.geojson  emergency.geojson  finance.geojson  food.geojson
+    ├── education.geojson  emergency.geojson  finance.geojson   food.geojson
     ├── government.geojson healthcare.geojson recreation.geojson religion.geojson
-    └── shopping.geojson   tourism.geojson    transport.geojson
+    └── services.geojson   shopping.geojson   tourism.geojson   transport.geojson
 ```
 
 ## 🚀 Development
