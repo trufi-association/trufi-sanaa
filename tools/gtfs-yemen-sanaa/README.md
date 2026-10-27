@@ -35,6 +35,16 @@ yields an empty feed. Returning `true` keeps them.
 Regenerating from *current* OSM may shift coverage as the map evolves — re-run
 and re-test routing in the app.
 
+## License and attribution
+
+The feed is a derivative database of OpenStreetMap, published under the
+ODbL 1.0 like its source. Since trufi-gtfs-builder 2.17 the zip carries the
+license text (`LICENSE`) and an `attributions.txt` with the OpenStreetMap
+contributors row the builder writes plus the producer row configured in
+[`index.ts`](index.ts) (`gtfsOptions.attributions`: Trufi Association).
+
 ## Pin
 
-`package.json` pins `trufi-gtfs-builder` to release `v2.13.4` via a GitHub tarball URL. Bump that ref to upgrade.
+`package.json` pins `trufi-gtfs-builder` to the git tag `v2.17.2`
+(`github:trufi-association/trufi-gtfs-builder#v2.17.2`). Bump that ref to
+upgrade; the builder is built from source on `npm install`.
