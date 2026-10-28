@@ -16,11 +16,13 @@ on:
   # base) are checked too.
   pull_request:
 
-# One run per pull request (or per branch on push): a new push cancels the
-# run of the previous commit instead of queueing behind it.
+# One run per pull request: a new push cancels the run of the previous
+# commit instead of queueing behind it. Pushes to main are never cancelled,
+# so every merge keeps its own verdict and a red main can be traced to the
+# merge that broke it.
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 permissions:
   contents: read
@@ -39,7 +41,8 @@ jobs:
       - name: Set up Flutter 3.47.8
         # Caches the Flutter SDK and the pub cache (keyed on pubspec.lock), so
         # the ~350 MB mirror clone of trufi-core that pub makes for the git
-        # dependencies is paid once per lockfile, not on every run.
+        # dependencies is paid once per lockfile by the first green run
+        # (actions/cache saves in a post step that only runs on success).
         uses: subosito/flutter-action@v2.23.0
         with:
           flutter-version: 3.47.8
