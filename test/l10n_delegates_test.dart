@@ -17,7 +17,7 @@ import 'package:trufi_core_about/l10n/about_localizations.dart';
 void main() {
   const ar = Locale('ar');
   const en = Locale('en');
-  final arabicScript = RegExp(r'[؀-ۿ]');
+  final arabicScript = RegExp(r'[\u0600-\u06FF]');
 
   test('L10n.delegates ships one Arabic-only delegate per namespace', () {
     expect(L10n.delegates, isNotEmpty);
