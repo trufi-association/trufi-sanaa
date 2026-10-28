@@ -1,0 +1,60 @@
+# `flutter analyze` + `flutter test` on every pull request and on every push
+# to main (issue #29). Nothing ran on a push before this file existed.
+#
+# Flutter is pinned to the exact stable release the app is built and tested
+# with locally (3.47.8), never to a channel, so the check does not change
+# colour because the channel moved. Bump it here together with the SDK in
+# use. The trufi-core packages are git dependencies on a public repository,
+# so `flutter pub get` needs no token; the tip checkout is ~29 MB (bundled
+# MBTiles, GTFS and POIs) and the repository does not use Git LFS.
+name: Flutter CI
+
+on:
+  push:
+    branches: [main]
+  # Every pull request, whatever its base: stacked PRs (a feature branch as
+  # base) are checked too.
+  pull_request:
+
+# One run per pull request (or per branch on push): a new push cancels the
+# run of the previous commit instead of queueing behind it.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  analyze-and-test:
+    name: analyze + test
+    runs-on: ubuntu-latest
+    # A widget test that awaits an un-mocked platform channel never fails on
+    # its own; without a limit the job would sit there for the 6 h default.
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Flutter 3.47.8
+        # Caches the Flutter SDK and the pub cache (keyed on pubspec.lock), so
+        # the ~350 MB mirror clone of trufi-core that pub makes for the git
+        # dependencies is paid once per lockfile, not on every run.
+        uses: subosito/flutter-action@v2.23.0
+        with:
+          flutter-version: 3.47.8
+          channel: stable
+          cache: true
+
+      - name: Flutter version
+        run: flutter --version
+
+      - name: Dependencies
+        run: flutter pub get
+
+      - name: Analyze
+        # Default strictness: infos and warnings fail the check (main is clean).
+        run: flutter analyze
+
+      - name: Test
+        run: flutter test
