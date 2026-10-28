@@ -12,6 +12,15 @@ import 'package:trufi_core_routing/trufi_core_routing.dart';
 /// Plans the reporter's two trips against the bundled feed with the app's
 /// exact configuration and with the old pool, through the same provider
 /// the app wires.
+/// The app's config with the previous pool of 150, the planner's default.
+const oldPool = TrufiPlannerConfig.local(
+  gtfsAsset: 'assets/routing/sanaa.gtfs.zip',
+  maxWalkingDistance: 1500,
+  maxTransfers: 4,
+  maxStopCandidates: 150,
+  persistIndex: false,
+);
+
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -53,29 +62,41 @@ void main() {
     expect(sanaaPlannerConfig.maxStopCandidates, 600);
   });
 
-  test('near origin (hotel): the line is the first result either way', () async {
-    final its = await planWith(sanaaPlannerConfig, hotel, destination);
-    expect(its, isNotEmpty);
-    expect(routesOf(its.first), [theRoute]);
-  });
+  test(
+    'near origin (hotel): the line is the first result either way',
+    () async {
+      for (final config in [sanaaPlannerConfig, oldPool]) {
+        final its = await planWith(config, hotel, destination);
+        expect(its, isNotEmpty);
+        expect(routesOf(its.first), [
+          theRoute,
+        ], reason: 'pool ${config.maxStopCandidates}');
+      }
+    },
+  );
 
   test('far origin (mosque): the line is offered as a direct ride', () async {
     final its = await planWith(sanaaPlannerConfig, mosque, destination);
-    expect(mentions(its, theRoute), isTrue, reason: its.map(routesOf).toString());
+    expect(
+      mentions(its, theRoute),
+      isTrue,
+      reason: its.map(routesOf).toString(),
+    );
     final direct = its.firstWhere((it) => routesOf(it).contains(theRoute));
     expect(routesOf(direct), [theRoute]);
   });
 
   test('regression: with the old pool of 150 the line disappears', () async {
-    const old = TrufiPlannerConfig.local(
-      gtfsAsset: 'assets/routing/sanaa.gtfs.zip',
-      maxWalkingDistance: 1500,
-      maxTransfers: 4,
-      maxStopCandidates: 150,
-      persistIndex: false,
-    );
-    final its = await planWith(old, mosque, destination);
+    // Same config but for the pool, so the comparison stays honest if the
+    // app's radius or transfer limit ever changes.
+    expect(oldPool.maxWalkingDistance, sanaaPlannerConfig.maxWalkingDistance);
+    expect(oldPool.maxTransfers, sanaaPlannerConfig.maxTransfers);
+    final its = await planWith(oldPool, mosque, destination);
     expect(its, isNotEmpty);
-    expect(mentions(its, theRoute), isFalse, reason: its.map(routesOf).toString());
+    expect(
+      mentions(its, theRoute),
+      isFalse,
+      reason: its.map(routesOf).toString(),
+    );
   });
 }

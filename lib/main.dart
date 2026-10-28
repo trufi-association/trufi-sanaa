@@ -83,15 +83,15 @@ const sanaaPlannerConfig = TrufiPlannerConfig.local(
   maxTransfers: 4,
   // The planner only boards at the N stops nearest to each endpoint
   // (within maxWalkingDistance). Sana'a's stops are OSM way nodes
-  // 22 m apart (median), so the default pool of 150 reaches only
-  // ~1.2 km in most of the city — it truncated the 1 500 m radius at
+  // ~20 m apart (median), so the default pool of 150 reaches only
+  // ~1.3 km (median) — it truncated the 1 500 m radius at
   // 59 % of 300 random endpoints and hid lines whose nearest stop is
   // farther than the 150th stop: issue #21 (جامع المرور → the
-  // شميلة ⟵ بينون route boards 1 381 m away, the 150th stop is at
+  // شميلة ⟵ بينون route boards ~1.4 km away, the 150th stop is at
   // 1 188 m). No stop in this feed has more than 520 stops within
-  // 1 500 m, so 600 is "every stop within walking distance"; 400
-  // already gives the same answers on 300 random pairs. Cost on this
-  // feed: 1.2 → 2.0 ms per query on average, 3.2 → 7.2 ms worst case
+  // 1 500 m, so 600 is the first value that never truncates (400 gives
+  // the same cards on 300 random pairs, a handful of rows differ). Cost
+  // on this feed: 1.2 → 2.0 ms per query on average, ~3 → 7-8 ms worst case
   // on desktop (a few times that on a phone). Not a core default: on
   // Cochabamba's dense feed the same value costs +50 % per query at
   // 800 m and 3x at 1 500 m.
