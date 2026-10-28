@@ -51,41 +51,57 @@ const _poiAssetPaths = <String>[
   'assets/pois/transport.geojson',
 ];
 
+// Offline planner configuration (public so `test/planner_reach_test.dart`
+// can plan against the bundled feed with exactly these values).
+const sanaaPlannerConfig = TrufiPlannerConfig.local(
+  gtfsAsset: 'assets/routing/sanaa.gtfs.zip',
+  // OTP parity (~20 min access walk; Cochabamba prod uses
+  // accessEgress.maxDuration 20m). The 800 m default leaves most of
+  // Sana'a's periphery unplannable: 33% of the served area is within
+  // 800 m of a stop vs 48% within 1500 m (issue #2). Note the core
+  // suppresses transfer options whenever a direct exists, so a far
+  // direct boarding can replace short-walk transfer alternatives —
+  // deliberate core behavior (one fare per ride) this radius amplifies.
+  maxWalkingDistance: 1500,
+  // Allow trips with up to four changes of bus (five buses). Sana'a's
+  // feed is 194 short lines, so many trips have no direct line and no
+  // single change: the reporter's trip in issue #2 (second reopening)
+  // needs 7 -> 14 -> 14, and his north-south trip across the city
+  // (third reopening, 45 km) needs 7 -> 7 -> 14 -> 14 -> 14 — nothing
+  // with three changes exists for it in this feed. Multi-transfer
+  // itineraries are only searched when nothing with 0 or 1 transfers
+  // exists, and the search stops at the first number of changes that
+  // reaches the destination, so trips that already plan do not change
+  // (verified: 0 differences on 400 random pairs >= 2 km apart).
+  // Plannable pairs in that sample: 54 % with the default (1), 77.5 %
+  // with 2 (v1.2.0), 90.3 % with 3, 96.3 % with 4, 99.5 % with 5.
+  // Cost of going from 2 to 4 on this feed: +0.45 ms per query on
+  // average, 2.6 ms worst case on desktop (roughly 10-15 ms on a
+  // phone), paid only by the queries that would otherwise return
+  // nothing; ~0.5 MB of transient memory, nothing on disk or at
+  // start-up (trufi-core#998 / #999).
+  maxTransfers: 4,
+  // The planner only boards at the N stops nearest to each endpoint
+  // (within maxWalkingDistance). Sana'a's stops are OSM way nodes
+  // 22 m apart (median), so the default pool of 150 reaches only
+  // ~1.2 km in most of the city — it truncated the 1 500 m radius at
+  // 59 % of 300 random endpoints and hid lines whose nearest stop is
+  // farther than the 150th stop: issue #21 (جامع المرور → the
+  // شميلة ⟵ بينون route boards 1 381 m away, the 150th stop is at
+  // 1 188 m). No stop in this feed has more than 520 stops within
+  // 1 500 m, so 600 is "every stop within walking distance"; 400
+  // already gives the same answers on 300 random pairs. Cost on this
+  // feed: 1.2 → 2.0 ms per query on average, 3.2 → 7.2 ms worst case
+  // on desktop (a few times that on a phone). Not a core default: on
+  // Cochabamba's dense feed the same value costs +50 % per query at
+  // 800 m and 3x at 1 500 m.
+  maxStopCandidates: 600,
+);
+
 // Routing engines: offline only.
 final List<IRoutingProvider> _routingEngines = [
   // Offline routing from the bundled Sana'a GTFS feed (mobile only).
-  if (!kIsWeb)
-    TrufiPlannerProvider(
-      config: const TrufiPlannerConfig.local(
-        gtfsAsset: 'assets/routing/sanaa.gtfs.zip',
-        // OTP parity (~20 min access walk; Cochabamba prod uses
-        // accessEgress.maxDuration 20m). The 800 m default leaves most of
-        // Sana'a's periphery unplannable: 33% of the served area is within
-        // 800 m of a stop vs 48% within 1500 m (issue #2). Note the core
-        // suppresses transfer options whenever a direct exists, so a far
-        // direct boarding can replace short-walk transfer alternatives —
-        // deliberate core behavior (one fare per ride) this radius amplifies.
-        maxWalkingDistance: 1500,
-        // Allow trips with up to four changes of bus (five buses). Sana'a's
-        // feed is 194 short lines, so many trips have no direct line and no
-        // single change: the reporter's trip in issue #2 (second reopening)
-        // needs 7 -> 14 -> 14, and his north-south trip across the city
-        // (third reopening, 45 km) needs 7 -> 7 -> 14 -> 14 -> 14 — nothing
-        // with three changes exists for it in this feed. Multi-transfer
-        // itineraries are only searched when nothing with 0 or 1 transfers
-        // exists, and the search stops at the first number of changes that
-        // reaches the destination, so trips that already plan do not change
-        // (verified: 0 differences on 400 random pairs >= 2 km apart).
-        // Plannable pairs in that sample: 54 % with the default (1), 77.5 %
-        // with 2 (v1.2.0), 90.3 % with 3, 96.3 % with 4, 99.5 % with 5.
-        // Cost of going from 2 to 4 on this feed: +0.45 ms per query on
-        // average, 2.6 ms worst case on desktop (roughly 10-15 ms on a
-        // phone), paid only by the queries that would otherwise return
-        // nothing; ~0.5 MB of transient memory, nothing on disk or at
-        // start-up (trufi-core#998 / #999).
-        maxTransfers: 4,
-      ),
-    ),
+  if (!kIsWeb) TrufiPlannerProvider(config: sanaaPlannerConfig),
 ];
 
 // Map engines: offline only (Sana'a MBTiles). No online tile servers.
