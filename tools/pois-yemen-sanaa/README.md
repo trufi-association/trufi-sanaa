@@ -84,5 +84,5 @@ passes the categories through the library API instead.
 ## Pin
 
 `package.json` pins `trufi-server-poi_extractor` to commit
-`1a5fa2a050217398ee5ce4b77c6f8f7430eb1180` (the repo has no tags). Bump the
-SHA to upgrade.
+`a3103b5915a9f5dfebe34ac2f95961c1ca9ab46e`, the head of its PR #2 (no tag
+includes the fix yet; `v1.0.0` predates it). Bump the SHA to upgrade.

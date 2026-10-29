@@ -8,6 +8,6 @@
     "start": "node extract.mjs"
   },
   "dependencies": {
-    "trufi-server-poi_extractor": "github:trufi-association/trufi-server-poi_extractor#1a5fa2a050217398ee5ce4b77c6f8f7430eb1180"
+    "trufi-server-poi_extractor": "github:trufi-association/trufi-server-poi_extractor#a3103b5915a9f5dfebe34ac2f95961c1ca9ab46e"
   }
 }
