@@ -3,7 +3,7 @@
  *
  * Uses trufi-gtfs-builder as a library. Output goes to ./out/.
  * The resulting gtfs.zip is what gets shipped to:
- *   - trufi-app/assets/routing/sanaa.gtfs.zip (offline routing in the APK)
+ *   - assets/routing/sanaa.gtfs.zip (offline routing in the APK)
  *
  * Starting point: the upstream Cochabamba config
  * (trufi-app/tools/gtfs-bolivia-cochabamba/index.ts) adapted to Sana'a.
@@ -70,6 +70,17 @@ async function main() {
       skipRoute: () => true,
     },
     gtfsOptions: {
+      // attributions.txt (ODbL chain): the builder writes the OpenStreetMap
+      // contributors row; this is the organisation behind the feed. LICENSE
+      // (ODbL 1.0) is the builder's default.
+      attributions: [
+        {
+          attribution_id: 'trufi',
+          organization_name: 'Trufi Association',
+          is_producer: 1,
+          attribution_url: 'https://www.trufi-association.org/',
+        },
+      ],
       // One GTFS route per OSM relation: Sana'a's ~194 lines share only 4
       // refs (157 use "7"), and grouping by ref collapsed them into 4 routes
       // — the route list showed 192 identical rows. See issue #1.
