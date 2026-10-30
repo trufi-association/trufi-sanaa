@@ -141,6 +141,15 @@ const _routeDetailShowStops = false;
 // over every corner (trufi-core#1051, issue #20). Results interleave
 // round-robin, streets first; the street service answers no reverse
 // lookup, so a long-press on the map keeps naming the nearest POI.
+//
+// One side effect of the composite, measured on this index (fresh review
+// of #31): results with the same display name closer than ~220 m merge
+// into one row, POIs among themselves too (trufi-core#984 wrote the rule
+// for online geocoders). Over 32 common queries 41 of ~740 POI rows went
+// that way, almost all OSM near-copies of one feature (a roundabout
+// mapped as three or four nodes, a clinic as node and building); the
+// order of the POIs that remain is the POI service's. Pass
+// `nearDuplicateEpsilon: 0` to merge exact-spot copies only.
 SearchLocationService sanaaSearchService() => CompositeSearchLocationService(
   services: [
     OfflineSearchDataService(
