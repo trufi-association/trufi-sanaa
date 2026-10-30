@@ -349,6 +349,18 @@ class HomeScreenLocalizationsAr extends HomeScreenLocalizations {
   @override
   String get copiedToClipboard => 'تم النسخ';
   @override
+  String get saveRoute => 'حفظ المسار';
+  @override
+  String get saveRouteName => 'اسم المسار';
+  @override
+  String get buttonSave => 'حفظ';
+  @override
+  String get etaUnavailable => 'وقت الوصول المباشر غير متاح';
+  @override
+  String get etaLoading => 'جارٍ التحقق من وقت الوصول المباشر…';
+  @override
+  String get etaRefresh => 'تحديث';
+  @override
   String durationMinutes(int minutes) => '${minutes} دقيقة';
   @override
   String durationHoursMinutes(int hours, int minutes) => '${hours} س ${minutes} د';
@@ -400,6 +412,16 @@ class HomeScreenLocalizationsAr extends HomeScreenLocalizations {
   String liveVehicleUpdatedMinutes(int minutes) => 'آخر تحديث قبل ${minutes} د';
   @override
   String providerNoOptions(String provider) => 'لا يحتوي مزوّد “${provider}” على خيارات قابلة للتعديل.';
+  @override
+  String routeSaved(String routeName) => 'تم حفظ المسار باسم "${routeName}"';
+  @override
+  String routeAlreadySaved(String routeName) => 'هذا المسار محفوظ مسبقًا باسم "${routeName}"';
+  @override
+  String etaArrivesIn(int minutes) => 'يصل خلال ~${minutes} دقيقة';
+  @override
+  String etaRefreshCooldown(int seconds) => 'يمكن التحديث بعد ${seconds} ث';
+  @override
+  String etaUpdated(String time) => 'آخر تحديث ${time}';
 }
 
 class _HomeScreenLocalizationsArDelegate extends LocalizationsDelegate<HomeScreenLocalizations> {
@@ -893,11 +915,47 @@ class SavedPlacesLocalizationsAr extends SavedPlacesLocalizations {
   @override
   String get history => 'السجل';
   @override
+  String get placeNameInUse => 'لديك مكان بهذا الاسم مسبقًا';
+  @override
   String get copiedToClipboard => 'تم النسخ';
+  @override
+  String get menuSavedRoutes => 'مساراتك';
+  @override
+  String get noRoutesSaved => 'لا توجد مسارات محفوظة بعد';
+  @override
+  String get noRoutesSavedHint => 'خطّط رحلة ثم انقر على أيقونة الحفظ للاحتفاظ بها هنا';
+  @override
+  String get savedRoutesSection => 'المسارات المحفوظة';
+  @override
+  String get renameRoute => 'إعادة تسمية المسار';
+  @override
+  String get routeName => 'اسم المسار';
+  @override
+  String get swapDirection => 'عكس الاتجاه';
+  @override
+  String get removeRoute => 'إزالة المسار';
+  @override
+  String get errorLoadingRoutes => 'خطأ في تحميل المسارات';
   @override
   String removePlaceConfirmation(String placeName) => 'هل أنت متأكد أنك تريد إزالة ${placeName}؟';
   @override
   String placeAlreadySaved(String placeName) => '"${placeName}" محفوظ مسبقًا في هذا الموقع';
+  @override
+  String routeOrigin(String name) => 'نقطة الانطلاق: ${name}';
+  @override
+  String routeDestination(String name) => 'الوجهة: ${name}';
+  @override
+  String distanceMeters(int meters) => '${meters} م';
+  @override
+  String distanceKilometers(String km) => '${km} كم';
+  @override
+  String durationMinutes(int minutes) => '${minutes} دقيقة';
+  @override
+  String durationHoursMinutes(int hours, int minutes) => '${hours} س ${minutes} د';
+  @override
+  String removeRouteConfirmation(String routeName) => 'هل أنت متأكد أنك تريد إزالة ${routeName}؟';
+  @override
+  String routeAlreadySaved(String routeName) => 'هذا المسار محفوظ مسبقًا باسم "${routeName}"';
 }
 
 class _SavedPlacesLocalizationsArDelegate extends LocalizationsDelegate<SavedPlacesLocalizations> {
@@ -940,6 +998,10 @@ class SearchLocationsLocalizationsAr extends SearchLocationsLocalizations {
   String get originFieldLabel => 'من';
   @override
   String get destinationFieldLabel => 'إلى';
+  @override
+  String linesAlongStreet(String street) => 'الخطوط على طول ${street}';
+  @override
+  String goToCoordinates(String coordinates) => 'الذهاب إلى ${coordinates}';
 }
 
 class _SearchLocationsLocalizationsArDelegate extends LocalizationsDelegate<SearchLocationsLocalizations> {
@@ -1135,6 +1197,32 @@ class TransportListLocalizationsAr extends TransportListLocalizations {
   @override
   String get copiedToClipboard => 'تم النسخ';
   @override
+  String get menuNearbyLines => 'الخطوط القريبة';
+  @override
+  String get nearbyAnchorYourLocation => 'موقعك الحالي';
+  @override
+  String get nearbyAnchorPinned => 'الموقع المثبّت';
+  @override
+  String get nearbyAnchorDefault => 'وسط المدينة (الموقع غير متاح)';
+  @override
+  String get nearbyUseMyLocation => 'استخدام موقعي';
+  @override
+  String get nearbyMovePinHint => 'اضغط مطولًا على الخريطة لنقل الدبوس';
+  @override
+  String get nearbyUnavailableTitle => 'الخطوط القريبة تتطلب مخطط الرحلات بدون إنترنت (GTFS)';
+  @override
+  String get nearbyUnavailableHint => 'أضف TrufiPlannerProvider محليًا مع بيانات GTFS مضمّنة إلى محركات التوجيه.';
+  @override
+  String get nearbyLoadingData => 'جارٍ تحميل البيانات المحفوظة على الجهاز…';
+  @override
+  String get nearbyFooterNote => 'استنادًا إلى مسارات GTFS وجداولها الزمنية';
+  @override
+  String get nearbyOpenDetails => 'تفاصيل الخط';
+  @override
+  String get nearbyClearSelection => 'إلغاء التحديد';
+  @override
+  String get nearbyClose => 'إغلاق';
+  @override
   String stops(int count) => '${count} محطة';
   @override
   String routeCount(int count) => '${count} خط';
@@ -1144,6 +1232,26 @@ class TransportListLocalizationsAr extends TransportListLocalizations {
   String distanceKilometers(String value) => '${value} كم';
   @override
   String distanceMeters(String value) => '${value} م';
+  @override
+  String nearbyAnchorAlongStreet(String street) => 'على طول ${street}';
+  @override
+  String nearbyRadiusChip(int meters, int count) => '${meters} م (${count})';
+  @override
+  String nearbyLinesInRadius(int count, int meters) => '${count} خط ضمن ${meters} م';
+  @override
+  String nearbyAtDistance(String distance) => 'على بعد ${distance}';
+  @override
+  String nearbyPassesAtDistance(String distance) => 'يمر على بعد ${distance}';
+  @override
+  String nearbyStopName(String name) => 'محطة ${name}';
+  @override
+  String nearbyTowards(String headsign) => 'باتجاه ${headsign}';
+  @override
+  String nearbySelectedLine(String name) => 'الخط المحدد: ${name}';
+  @override
+  String nearbyEmptyTitle(int meters) => 'لا تمر خطوط ضمن ${meters} م';
+  @override
+  String nearbyEmptyInRadius(int meters) => 'لا توجد خطوط ضمن ${meters} م. جرّب نطاقًا أوسع.';
 }
 
 class _TransportListLocalizationsArDelegate extends LocalizationsDelegate<TransportListLocalizations> {
