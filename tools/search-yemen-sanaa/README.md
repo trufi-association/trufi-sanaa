@@ -28,10 +28,14 @@ prefix search — `pois` is stripped on purpose (the app's places come from the
 POI GeoJSON of `tools/pois-yemen-sanaa`); only the empty `pois` key and its
 `_fields` header remain, which `OfflineSearchDataService` ignores.
 
-What the first run (2026-10-30) produced from the committed PBF: 209 streets
-(193 named in Arabic), 181 of them with corners, 626 corner rows; the names
+What the first run (2026-10-30) produced from the committed PBF: 206 streets
+(193 named in Arabic), 176 of them with corners, 614 corner rows; the names
 are the OSM `name` tags as written (`alternativeNames` carries `alt_name`
 and the like, not `name:en`, so a street is found by its Arabic name).
+`index.js` drops the ways whose `name` has no letter at all (the extract has
+three: ".", "3180", "801" — they ranked first for any query starting with a
+digit) and strips the U+200E/U+200F marks pasted inside a name; the run
+prints what it dropped.
 `region` (the municipality) is empty: the extract has no `admin_level=8`
 boundaries, so the street rows have no subtitle. Sana'a's OSM data names
 few of its streets (18 142 highway ways in the extract, 1 142 with a

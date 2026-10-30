@@ -49,7 +49,7 @@ void main() {
 
   test('the index ships corners for most of its streets', () async {
     // A street without corners is selectable but never opens the corners
-    // list (no "Lines along" row); the 2026-10-30 index has 181 of 209.
+    // list (no "Lines along" row); the 2026-10-30 index has 176 of 206.
     final results = await service.search('شارع');
     final drill = service as SearchLocationDrillDown;
     final streets = results.where((r) => r.id.startsWith('street:')).toList();
