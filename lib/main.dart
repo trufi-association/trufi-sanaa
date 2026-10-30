@@ -124,6 +124,14 @@ const sanaaPlannerConfig = TrufiPlannerConfig.local(
   directsHideTransfers: false,
 );
 
+// The feed's stops are OSM way nodes placed along each line, not stops
+// anyone waits at (issue #18): the route detail keeps the line's name,
+// terminals, badge and geometry and drops the stop timeline, the count
+// and the dotted markers (trufi-core#1014). Applied to every route detail
+// the app opens: the Routes list, a line badge in an itinerary, and the
+// nearby-lines rows.
+const _routeDetailShowStops = false;
+
 // Routing engines: offline only.
 final List<IRoutingProvider> _routingEngines = [
   // Offline routing from the bundled Sana'a GTFS feed (mobile only).
@@ -264,7 +272,7 @@ void main() {
           },
         ),
         SavedPlacesTrufiScreen(),
-        TransportListTrufiScreen(),
+        TransportListTrufiScreen(showStops: _routeDetailShowStops),
         SettingsTrufiScreen(),
         AboutTrufiScreen(
           config: AboutScreenConfig(
