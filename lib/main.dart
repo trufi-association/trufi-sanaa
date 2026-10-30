@@ -270,9 +270,37 @@ void main() {
           onRouteTap: (context, routeCode) {
             TransportDetailScreen.show(context, routeCode: routeCode);
           },
+          // "Lines along <street>", first row of a street's corners list in
+          // the search (trufi-core#1051, issue #20): opens the nearby-lines
+          // screen over every corner of the street at once, each line listed
+          // once at its nearest corner. Core shows the row only when the app
+          // wires this handler; the row label and the screen header come
+          // localized from core (Arabic from lib/l10n/).
+          onLinesAlongStreet: (context, street, corners) {
+            NearbyLinesTrufiScreen.showAlongStreet(
+              context,
+              NearbyStreetAnchor(
+                name: street.displayName,
+                subtitle: street.address,
+                corners: [
+                  for (final corner in corners)
+                    LatLng(corner.latitude, corner.longitude),
+                ],
+              ),
+            );
+          },
         ),
         SavedPlacesTrufiScreen(),
+        // Bookmarked origin-destination trips, "Your Routes"
+        // (trufi-core#1008). Registering it also puts the bookmark button on
+        // the route results; endpoints are stored as coordinates and names,
+        // so saved routes survive a feed refresh.
+        SavedRoutesTrufiScreen(),
         TransportListTrufiScreen(showStops: _routeDetailShowStops),
+        // Lines passing within 100 / 300 / 500 m of the rider or of a pin
+        // long-pressed on its map, computed on the device from the bundled
+        // GTFS of the offline planner (trufi-core#1009, issue #20).
+        NearbyLinesTrufiScreen(showStops: _routeDetailShowStops),
         SettingsTrufiScreen(),
         AboutTrufiScreen(
           config: AboutScreenConfig(
