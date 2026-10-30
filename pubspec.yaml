@@ -209,3 +209,5 @@ flutter:
     - assets/offline/fonts/RobotoCondensedItalic/
     # Offline routing data (GTFS)
     - assets/routing/
+    # Offline street/corner search index (tools/search-yemen-sanaa)
+    - assets/search/

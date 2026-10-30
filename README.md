@@ -19,13 +19,16 @@ limited.
 - **Offline maps** — 4 MapLibre styles (OSM Liberty, OSM Bright, Dark Matter, Fiord Color) rendered
   from a bundled Sana'a `.mbtiles`.
 - **Offline routing** — public-transport trip planning from a bundled Sana'a GTFS feed.
-- **Offline search** — address/place search over the bundled POIs (Arabic & English names), no
-  geocoding server.
+- **Offline search** — place search over the bundled POIs (Arabic & English names) and street /
+  street-corner search over an index generated from OpenStreetMap
+  ([`tools/search-yemen-sanaa`](tools/search-yemen-sanaa/)), no geocoding server.
+- **Nearby lines** — the lines passing within 100 / 300 / 500 m of your position or of a point on
+  the map, and the lines along a street (from its corners), computed on the device.
 - **POI layers** — 12 categories of points of interest (healthcare, education, food, shopping,
   services, government, …) extracted from OpenStreetMap with
   [`tools/pois-yemen-sanaa`](tools/pois-yemen-sanaa/).
 - **Step-by-step navigation** for public-transport trips.
-- **Saved places** and a full **transport route list**.
+- **Saved places**, **saved routes** and a full **transport route list**.
 
 ## 🌐 Offline-first by design
 
@@ -33,7 +36,7 @@ limited.
 |---|---|
 | Map tiles | Bundled `assets/offline/sanaa.mbtiles` (offline) |
 | Routing | Bundled `assets/routing/sanaa.gtfs.zip` (offline GTFS) |
-| Address search | Local POIs (`OfflinePoiSearchService`), no server |
+| Address search | Local POIs (`OfflinePoiSearchService`) + street index (`assets/search/search.json`), no server |
 | Online tile servers / OTP / Photon | **Removed** |
 | Network calls | **None** |
 
@@ -66,6 +69,8 @@ assets/
 │   ├── sanaa.mbtiles                # Offline map tiles
 │   ├── styles/                      # MapLibre styles (osm-bright/liberty/dark-matter/fiord-color)
 │   └── fonts/                       # Glyph PBFs for the styles
+├── search/
+│   └── search.json                  # Streets + corners for the offline search (tools/search-yemen-sanaa)
 └── pois/                            # POIs as GeoJSON (Arabic & English names) + metadata.json
     ├── education.geojson  emergency.geojson  finance.geojson   food.geojson
     ├── government.geojson healthcare.geojson recreation.geojson religion.geojson
