@@ -111,6 +111,17 @@ const sanaaPlannerConfig = TrufiPlannerConfig.local(
   // Cochabamba's dense feed the same value costs +50 % per query at
   // 800 m and 3x at 1 500 m.
   maxStopCandidates: 600,
+  // List the one-change itineraries after the direct lines instead of
+  // hiding them (trufi-core#1043, issue #16). The planner computes the
+  // one-transfer bucket anyway and, by default, drops it as soon as a
+  // direct line exists (one fare per ride); on this feed, where many
+  // overlapping lines serve the same corridor, that left 75 % of the
+  // plannable trips with a single card. Showing the bucket only adds rows
+  // to compare, nothing extra is searched: on 300 random trips >= 2 km,
+  // single-card trips 75 % -> 53 % and 1.33 -> 1.87 cards on average
+  // (with the pool above), ~2 ms per query on a desktop. Trips with two
+  // or more changes still appear only when nothing shorter exists.
+  directsHideTransfers: false,
 );
 
 // Routing engines: offline only.
