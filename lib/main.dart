@@ -129,7 +129,9 @@ const sanaaPlannerConfig = TrufiPlannerConfig.local(
 // terminals, badge and geometry and drops the stop timeline, the count
 // and the dotted markers (trufi-core#1014). Applied to every route detail
 // the app opens: the Routes list, a line badge in an itinerary, and the
-// nearby-lines rows.
+// nearby-lines rows; since trufi-core v5.29.0 (#1058) also the per-leg stop
+// rows of the itinerary detail (navigation mode still counts them:
+// trufi-core#1059).
 const _routeDetailShowStops = false;
 
 // Offline search, no network (public for test/offline_street_search_test.dart):
@@ -285,6 +287,9 @@ void main() {
             appName: _appName,
             deepLinkScheme: _deepLinkScheme,
             poiLayersManager: POILayersManager(assetsBasePath: 'assets/pois'),
+            // trufi-core#1058 (v5.29.0): the itinerary detail stops counting
+            // and listing the synthetic stops per leg (issue #18).
+            showStops: _routeDetailShowStops,
           ),
           onStartNavigation: (context, itinerary, locationService) {
             NavigationScreen.showFromItinerary(
