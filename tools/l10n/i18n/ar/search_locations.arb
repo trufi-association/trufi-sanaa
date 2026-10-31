@@ -12,5 +12,7 @@
   "searchCornersHint": "ابحث عن تقاطع...",
   "copiedToClipboard": "تم النسخ",
   "originFieldLabel": "من",
-  "destinationFieldLabel": "إلى"
+  "destinationFieldLabel": "إلى",
+  "linesAlongStreet": "الخطوط على طول {street}",
+  "goToCoordinates": "الذهاب إلى {coordinates}"
 }

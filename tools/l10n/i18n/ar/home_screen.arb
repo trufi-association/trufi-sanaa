@@ -130,5 +130,16 @@
   "liveVehicleSpeed": "{speed} كم/س",
   "liveVehicleUpdatedSeconds": "آخر تحديث قبل {seconds} ث",
   "liveVehicleUpdatedMinutes": "آخر تحديث قبل {minutes} د",
-  "copiedToClipboard": "تم النسخ"
+  "copiedToClipboard": "تم النسخ",
+  "saveRoute": "حفظ المسار",
+  "saveRouteName": "اسم المسار",
+  "buttonSave": "حفظ",
+  "routeSaved": "تم حفظ المسار باسم \"{routeName}\"",
+  "routeAlreadySaved": "هذا المسار محفوظ مسبقًا باسم \"{routeName}\"",
+  "etaArrivesIn": "يصل خلال ~{minutes} دقيقة",
+  "etaUnavailable": "وقت الوصول المباشر غير متاح",
+  "etaLoading": "جارٍ التحقق من وقت الوصول المباشر…",
+  "etaRefresh": "تحديث",
+  "etaRefreshCooldown": "يمكن التحديث بعد {seconds} ث",
+  "etaUpdated": "آخر تحديث {time}"
 }
